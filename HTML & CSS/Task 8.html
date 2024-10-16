@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Layout</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: white;
+        margin: 0;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .box {
+        padding: 20px;
+        border: 1px solid #dddddd;
+        font-size: 16px;
+        text-align: center;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="box" id="book1">Box 1</div>
+      <div class="box" id="book2">Box 2</div>
+      <div class="box" id="book3">Box 3</div>
+      <div class="box" id="book4">Box 4</div>
+      <div class="box" id="book5">Box 5</div>
+      <div class="box" id="book6">Box 6</div>
+    </div>
+  </body>
+</html>

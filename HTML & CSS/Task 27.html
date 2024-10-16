@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Tabs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .tab-container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-container input[type="radio"] {
+      display: none;
+    }
+
+    .tab-btn {
+      padding: 15px;
+      cursor: pointer;
+      background-color: #f1f1f1;
+      border: 1px solid #dddddd;
+      text-align: left;
+      transition: background-color 0.3s, color 0.3s;
+      flex: 1;
+    }
+
+    .tab-btn:hover {
+      background-color: #dddddd;
+    }
+
+    .tab-content {
+      display: none;
+      flex: 3;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    #tab1:checked ~ .tab-content#content1 {
+      display: block;
+    }
+
+    #tab2:checked ~ .tab-content#content2 {
+      display: block;
+    }
+
+    #tab3:checked ~ .tab-content#content3 {
+      display: block;
+    }
+
+    #tab4:checked ~ .tab-content#content4 {
+      display: block;
+    }
+
+    .tab-content h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <!-- Tabs -->
+    <input type="radio" id="tab1" name="tab" checked>
+    <label for="tab1" class="tab-btn">Home</label>
+    <input type="radio" id="tab2" name="tab">
+    <label for="tab2" class="tab-btn">Services</label>
+    <input type="radio" id="tab3" name="tab">
+    <label for="tab3" class="tab-btn">Contact</label>
+    <input type="radio" id="tab4" name="tab">
+    <label for="tab4" class="tab-btn">About</label>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="content1">
+      <h2>Home</h2>
+      <p>Welcome to our website!</p>
+    </div>
+
+    <div class="tab-content" id="content2">
+      <h2>Services</h2>
+      <p>We offer a variety of services.</p>
+    </div>
+
+    <div class="tab-content" id="content3">
+      <h2>Contact</h2>
+      <p>Get in touch with us.</p>
+    </div>
+
+    <div class="tab-content" id="content4">
+      <h2>About</h2>
+      <p>Learn more about our company.</p>
+    </div>
+  </div>
+</body>
+</html>

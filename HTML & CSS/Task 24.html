@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .menu {
+            position: relative;
+            width: 200px;
+        }
+
+        .menu-items {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-items li {
+            border-bottom: 1px solid #0062cc;
+        }
+
+        .menu-items li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-items a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu-items a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle:checked ~ .menu-items {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-label">Menu</label>
+        <ul class="menu-items">
+            <li id="Home"><a href="#Home">Home</a></li>
+            <li id="About"><a href="#About">About</a></li>
+            <li id="Services"><a href="#Services">Services</a></li>
+            <li id="Contact"><a href="#Contact">Contact</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

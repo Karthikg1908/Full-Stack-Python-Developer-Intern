@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Gallery</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #9b59b6, #6a89cc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Container Styles */
+        .container {
+            text-align: center;
+            background-color: white;
+            border-radius: 50px;
+            padding: 50px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.7s ease;
+            overflow: hidden; /* Prevents any overflow outside the container */
+            max-height: 700px; /* Limits the height of the container */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Task List Styles for 2-column Layout */
+        .task-list {
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
+            gap: 20px; /* Add gap between items */
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            max-width: 1000px;
+            justify-content: center;
+			align-items: center;
+            overflow-y: scroll; /* Enable vertical scrolling for overflowing content */
+            max-height: 500px; /* Limit the height of the list */
+        }
+
+        /* Individual Task Styles */
+        .task-list li {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+			justify-content: center;
+            cursor: pointer;
+            border: 1px solid #ddd;
+			align-items: center;
+            flex-shrink: 0;
+            width: 280px; /* Fixed width for each task */
+        }
+
+        .task-list li:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #f4f7f6;
+        }
+
+        .task-list li::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: #3498db;
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        .task-list li:hover::after {
+            width: 100%;
+        }
+
+        /* Link Styles */
+        .task-list a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 1.3em;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .task-list a:hover {
+            color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .task-list a:active {
+            color: #1f5f8b;
+        }
+
+        .task-list a:focus {
+            outline: 3px solid #9b59b6;
+            outline-offset: 5px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .task-list {
+                gap: 15px; /* Reduce gap for smaller screens */
+                grid-template-columns: repeat(1, 1fr); /* Switch to single column for tablets */
+            }
+
+            .task-list li {
+                width: 240px; /* Smaller width on tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .task-list li {
+                width: 200px; /* Adjust width for mobile screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Gallery</h1>
+		<h3 style="font-size: 1.5em; margin-bottom: 30px; color: #34495e; font-weight: 500; font-family: 'Times New Roman', serif; text-shadow: 0 0 10px #3498db, 0 0 20px #3498db, 0 0 30px #3498db, 0 0 40px #3498db;">These are the tasks that I performed during my HTML & CSS internship phase.</h3>
+		<ul class="task-list">
+			<li><a href="HTML & CSS/Task 1.html" target="_blank" aria-label="Task 1: Coming Soon Button">Task 1: Coming Soon Button</a></li>
+			<li><a href="HTML & CSS/Task 2.html" target="_blank" aria-label="Task 2: Newsletter Subscription">Task 2: Newsletter Subscription</a></li>
+			<li><a href="HTML & CSS/Task 3.html" target="_blank" aria-label="Task 3: Grid Layout">Task 3: Grid Layout</a></li>
+			<li><a href="HTML & CSS/Task 4.html" target="_blank" aria-label="Task 4: Glowing Text">Task 4: Glowing Text</a></li>
+			<li><a href="HTML & CSS/Task 5.html" target="_blank" aria-label="Task 5: Simple Navbar">Task 5: Simple Navbar</a></li>
+			<li><a href="HTML & CSS/Task 6.html" target="_blank" aria-label="Task 6: Error 404 Page">Task 6: Error 404 Page</a></li>
+			<li><a href="HTML & CSS/Task 7.html" target="_blank" aria-label="Task 7: Collapsible Panel">Task 7: Collapsible Panel</a></li>
+			<li><a href="HTML & CSS/Task 8.html" target="_blank" aria-label="Task 8: Profile Card">Task 8: Profile Card</a></li>
+			<li><a href="HTML & CSS/Task 9.html" target="_blank" aria-label="Task 9: 3D Card Flip">Task 9: 3D Card Flip</a></li>
+			<li><a href="HTML & CSS/Task 10.html" target="_blank" aria-label="Task 10: Sticky Footer">Task 10: Sticky Footer</a></li>
+			<li><a href="HTML & CSS/Task 11.html" target="_blank" aria-label="Task 11: Dropdown Menu">Task 11: Dropdown Menu</a></li>
+			<li><a href="HTML & CSS/Task 12.html" target="_blank" aria-label="Task 12: Hover Animation">Task 12: Hover Animation</a></li>
+			<li><a href="HTML & CSS/Task 13.html" target="_blank" aria-label="Task 13: Responsive Grid">Task 13: Responsive Grid</a></li>
+			<li><a href="HTML & CSS/Task 14.html" target="_blank" aria-label="Task 14: Image Gallery">Task 14: Image Gallery</a></li>
+			<li><a href="HTML & CSS/Task 15.html" target="_blank" aria-label="Task 15: Login Form">Task 15: Login Form</a></li>
+			<li><a href="HTML & CSS/Task 16.html" target="_blank" aria-label="Task 16: Card Layout">Task 16: Card Layout</a></li>
+			<li><a href="HTML & CSS/Task 17.html" target="_blank" aria-label="Task 17: Sidebar Navigation">Task 17: Sidebar Navigation</a></li>
+			<li><a href="HTML & CSS/Task 18.html" target="_blank" aria-label="Task 18: Parallax Scrolling">Task 18: Parallax Scrolling</a></li>
+			<li><a href="HTML & CSS/Task 19.html" target="_blank" aria-label="Task 19: Animated Loading Spinner">Task 19: Animated Loading Spinner</a></li>
+			<li><a href="HTML & CSS/Task 20.html" target="_blank" aria-label="Task 20: Dark Mode">Task 20: Dark Mode</a></li>
+			<li><a href="HTML & CSS/Task 21.html" target="_blank" aria-label="Task 21: Form Elements">Task 21: Form Elements</a></li>
+			<li><a href="HTML & CSS/Task 22.html" target="_blank" aria-label="Task 22: Testimonial Slider">Task 22: Testimonial Slider</a></li>
+			<li><a href="HTML & CSS/Task 23.html" target="_blank" aria-label="Task 23: Scroll Animations">Task 23: Scroll Animations</a></li>
+			<li><a href="HTML & CSS/Task 24.html" target="_blank" aria-label="Task 24: Accordion">Task 24: Accordion</a></li>
+			<li><a href="HTML & CSS/Task 25.html" target="_blank" aria-label="Task 25: Floating Action Button">Task 25: Floating Action Button</a></li>
+			<li><a href="HTML & CSS/Task 26.html" target="_blank" aria-label="Task 26: Dashboard Cards">Task 26: Dashboard Cards</a></li>
+			<li><a href="HTML & CSS/Task 27.html" target="_blank" aria-label="Task 27: Vertical Tabs">Task 27: Vertical Tabs</a></li>
+			<li><a href="HTML & CSS/Task 28.html" target="_blank" aria-label="Task 28: Event Invitation">Task 28: Event Invitation</a></li>
+			<li><a href="HTML & CSS/Task 29.html" target="_blank" aria-label="Task 29: Fitness Tracker">Task 29: Fitness Tracker</a></li>
+			<li><a href="HTML & CSS/Task 30.html" target="_blank" aria-label="Task 30: Personal Portfolio">Task 30: Personal Portfolio</a></li>
+	</ul>
+    </div>
+</body>
+</html>

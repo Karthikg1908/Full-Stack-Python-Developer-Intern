@@ -1,0 +1,38 @@
+ <!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Bubble</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .speech-bubble {
+        font-family: Arial, sans-serif;
+        position: relative;
+        background-color: #3498db;
+        border-radius: 50px;
+        padding: 20px;
+        color: white;
+        max-width: 300px;
+      }
+
+      .speech-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="speech-bubble">
+      Hello! I am a speech bubble.
+    </div>
+  </body>
+</html>

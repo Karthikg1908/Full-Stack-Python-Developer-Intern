@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skewed Sections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .skewed-section-1 {
+            background: #3498db;
+            transform: skewY(-10deg);
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .skewed-section-2 {
+            background: #e74c3c;
+            transform: skewY(10deg);
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .skewed-section-3 {
+            background: #2ecc71;
+            transform: skewY(-10deg);
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .content {
+            transform: skewY(10deg);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="skewed-section-1">
+      <div class="content" id="skew1">
+        <h1 id="skewTitle1">Welcome to My Website</h1>
+        <p id="skewDescription1">This is the first skewed section.</p>
+      </div>
+    </section>
+    <section class="skewed-section-2">
+      <div class="content" id="skew2">
+        <h1 id="skewTitle2">About Us</h1>
+        <p id="skewDescription2">This is the second skewed section.</p>
+      </div>
+    </section>
+    <section class="skewed-section-3">
+      <div class="content" id="skew3">
+        <h1 id="skewTitle3">Contact Us</h1>
+        <p id="skewDescription3">This is the third skewed section.</p>
+      </div>
+    </section>
+  </body>
+</html>

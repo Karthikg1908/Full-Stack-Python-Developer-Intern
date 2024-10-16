@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Files</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: linear-gradient(to right, #f3e5f5, #e3f2fd, #e0f2f1);
+      }
+
+      .upload-container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          text-align: center;
+      }
+
+      .upload-area {
+          border: 2px dashed #cccccc;
+          border-radius: 5px;
+          padding: 20px;
+          cursor: pointer;
+      }
+
+      .choose-files-btn {
+          background-color: #f0f0f0;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          color: #666666;
+          font-size: 14px;
+          cursor: pointer;
+      }
+
+      .upload-text {
+          color: #999999;
+          margin-left: 10px;
+          font-size: 14px;
+      }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <div class="upload-area">
+            <button class="choose-files-btn">CHOOSE FILES</button>
+            <span class="upload-text">or drop files here</span>
+        </div>
+    </div>
+</body>
+</html>

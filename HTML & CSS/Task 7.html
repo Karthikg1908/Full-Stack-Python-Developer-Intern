@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Review Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #f0f0f0;
+      }
+
+      .review-card {
+          width: 300px;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-align: center;
+      }
+
+      .review-heading {
+          font-size: 24px;
+          margin-bottom: 20px;
+          color: #343a40;
+      }
+
+      .review-content {
+          background-color: #fff9e6;
+          padding: 15px;
+          border-left: 5px solid #ffa500;
+          border-radius: 5px;
+          text-align: left;
+      }
+
+      .book-title {
+          font-size: 20px;
+          color: #007bff;
+          margin-bottom: 10px;
+      }
+
+      .author, .review {
+          margin: 5px 0;
+      }
+
+      .author strong {
+          color: #007bff;
+      }
+
+      .review strong {
+          color: #6f42c1;
+      }
+
+      p {
+          margin: 0;
+          font-size: 14px;
+          color: #333333;
+      }
+    </style>
+</head>
+<body>
+    <div class="review-card">
+        <h2 class="review-heading">Book Review</h2>
+        <div class="review-content">
+            <h3 class="book-title">Book Title</h3>
+            <p class="author">
+                <strong id="authorheading">Author:</strong> Author Name
+            </p>
+            <p class="review">
+                <strong id="reviewheading">Review:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna nec eros convallis facilisis.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        .workout {
+            background-color: #ffffff;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .workout p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fitness Tracker</h1>
+        <nav>
+            <ul>
+                <li id="Home"><a href="#Home">Home</a></li>
+                <li id="Workouts"><a href="#Workouts">Workouts</a></li>
+                <li id="Nutrition"><a href="#Nutrition">Nutrition</a></li>
+                <li id="Contact"><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="workout" id="workout1">
+            <h2 id="workoutHeading1">Workout 1</h2>
+            <p id="workoutDescription1">Description of workout 1.</p>
+        </section>
+        <section class="workout" id="workout2">
+            <h2 id="workoutHeading2">Workout 2</h2>
+            <p id="workoutDescription2">Description of workout 2.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fitness Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

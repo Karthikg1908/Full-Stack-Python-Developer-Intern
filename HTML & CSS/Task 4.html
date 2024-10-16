@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlap Block Layout</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      .container {
+          position: relative;
+          width: 300px;
+          height: 200px;
+      }
+
+      .block {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 18px;
+          font-weight: bold;
+      }
+
+      #block1 {
+          background-color: #3498db;
+          top: 0;
+          left: 0;
+      }
+
+      #block2 {
+          background-color: #e74c3c;
+          top: 50px;
+          left: 50px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block" id="block1">Block 1</div>
+        <div class="block" id="block2">Block 2</div>
+    </div>
+</body>
+</html>
+

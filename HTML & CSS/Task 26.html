@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-content {
+            padding: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .read-more {
+            display: block;
+            text-align: right;
+            padding: 10px 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" id="card1">
+            <div class="card-title" id="cardTitle1">Card Title 1</div>
+            <div class="card-content" id="cardContent1">Content for the first card. This could be any information you want to display.</div>
+            <a href="#card1" class="read-more" id="cardReadmore1">Read More</a>
+        </div>
+        
+        <div class="card" id="card2">
+            <div class="card-title" id="cardTitle2">Card Title 2</div>
+            <div class="card-content" id="cardContent2">Content for the second card. More details can be added here.</div>
+            <a href="#card2" class="read-more" id="cardReadmore2">Read More</a>
+        </div>
+        
+        <div class="card" id="card3">
+            <div class="card-title" id="cardTitle3">Card Title 3</div>
+            <div class="card-content" id="cardContent3">Content for the third card. More details can be added here.</div>
+            <a href="#card3" class="read-more" id="cardReadmore3">Read More</a>
+        </div>
+    </div>
+</body>
+</html>

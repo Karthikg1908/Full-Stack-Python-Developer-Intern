@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .pricing-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .plan h2 {
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #333333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-container">
+        <div class="plan" id="Basicplan">
+            <h2 id="plan1">Basic</h2>
+            <p class="price" id="Basicprice">$10/month</p>
+            <ul id="Basic">
+                <li id="BasicFeature1">Feature 1</li>
+                <li id="BasicFeature2">Feature 2</li>
+                <li id="BasicFeature3">Feature 3</li>
+            </ul>
+        </div>
+        <div class="plan" id="proplan">
+            <h2 id="plan2">Pro</h2>
+            <p class="price" id="proprice">$20/month</p>
+            <ul id="pro">
+                <li id="proFeature1">Feature 1</li>
+                <li id="proFeature2">Feature 2</li>
+                <li id="proFeature3">Feature 3</li>
+            </ul>
+        </div>
+        <div class="plan" id="Premiumplan">
+            <h2 id="plan3">Premium</h2>
+            <p class="price" id="Premiumprice">$30/month</p>
+            <ul id="Premium">
+                <li id="PremiumFeature1">Feature 1</li>
+                <li id="PremiumFeature2">Feature 2</li>
+                <li id="PremiumFeature3">Feature 3</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

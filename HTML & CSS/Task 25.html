@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listing</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          padding: 20px;
+          background-color: #f4f4f4;
+        }
+
+        .job-listing {
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        h1 {
+            background-color: #ff5722;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .job {
+          background-color: white;
+          border: 1px solid #dddddd;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 4px;
+        }
+
+        .job h2 {
+          margin-top: 0;
+          font-size: 1.5em;
+          color: #333333;
+        }
+
+        .job p {
+          margin: 10px 0;
+          color: #555555;
+        }
+
+        button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <div class="job-listing">
+        <h1>Job Openings</h1>
+        <div class="job" id="job1">
+            <h2 id="title1">Job Title 1</h2>
+            <p id="location1"><strong id="loc1">Location:</strong> City, State</p>
+            <p id="description1">Description of job 1.</p>
+            <button id="apply1">Apply Now</button>
+        </div>
+        <div class="job" id="job2">
+            <h2 id="title2">Job Title 2</h2>
+            <p id="location2"><strong id="loc2">Location:</strong> City, State</p>
+            <p id="description2">Description of job 2.</p>
+            <button id="apply2">Apply Now</button>
+        </div>
+    </div>
+</body>
+</html>

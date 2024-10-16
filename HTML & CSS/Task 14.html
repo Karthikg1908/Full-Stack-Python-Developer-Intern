@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      .business-card {
+        background-color: white;
+        border-radius: 5px;
+        padding: 20px;
+        width: fit-content;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .business-card h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #333333;
+      }
+
+      .business-card p {
+        margin: 0;
+        margin-bottom: 10px;
+        color: #666666;
+      }
+
+      .business-card a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      .business-card a:hover {
+        text-decoration: underline;
+      }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <h1>John Doe</h1>
+        <p id="job">Web Developer</p>
+        <p id="contact">Contact: johndoe@example.com</p>
+        <a id="linkedin" href="https://www.linkedin.com/in/johndoe">LinkedIn</a>
+        <a id="github" href="https://github.com/johndoe">GitHub</a>
+    </div>
+</body>
+</html>

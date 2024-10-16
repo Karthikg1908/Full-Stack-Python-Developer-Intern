@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Invitation</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      .invitation-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+
+      h1 {
+        color: white;
+        background-color: #7D3C98;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .event-details h2 {
+        color: #7D3C98;
+      }
+
+      .rsvp-form label {
+        color: #7D3C98;
+        display: block;
+        margin-top: 10px;
+      }
+
+      .rsvp-form input[type="text"], 
+      .rsvp-form input[type="email"] {
+        width: 90%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+      }
+
+      .rsvp-form button {
+        background-color: #7D3C98;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .rsvp-form button:hover {
+        background-color: #5e2a7b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="invitation-container">
+      <h1>You're Invited!</h1>
+      <div class="event-details">
+        <h2>Event Details</h2>
+        <p id="date">Date: December 31, 2024</p>
+        <p id="time">Time: 7:00 PM</p>
+        <p id="loc">Location: 123 Event Street, City</p>
+      </div>
+      <form class="rsvp-form">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
