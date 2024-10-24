@@ -20,7 +20,7 @@ body {
 /* Container Styles for Left and Right Columns */
 .container {
     display: flex;
-    width: 100%; /* Full width */
+    width: 80%; /* Set a specific width for better control */
 }
 
 /* Left Column Styles */
@@ -28,7 +28,7 @@ body {
     flex: 1; /* Take up 50% of the width */
     background-color: #ffffff; /* White background */
     padding: 30px; /* Increased padding */
-    border-radius: 20px 0 0 20px; /* Rounded corners */
+    border-radius: 15px; /* Adjusted border radius */
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Softer shadow */
     overflow-y: auto; /* Enable vertical scrolling for overflowing content */
     max-height: 700px; /* Limit the height of the list */
@@ -39,11 +39,13 @@ body {
     flex: 1; /* Take up 50% of the width */
     background-color: #f0f4f8; /* Light background */
     padding: 30px; /* Increased padding */
-    border-radius: 0 20px 20px 0; /* Rounded corners */
+    border-radius: 15px; /* Adjusted border radius */
     box-shadow: -8px 40px 40px rgba(0, 0, 0, 0.1); /* Softer shadow */
     overflow-y: auto; /* Enable vertical scrolling for overflowing content */
     max-height: 700px; /* Limit the height of the list */
+    margin-left: 20px; /* Add left margin to create space between columns */
 }
+
 
 /* Common Styles */
 h1 {
