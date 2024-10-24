@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Reverser</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Name Reverser</h1>
+        <input id="nameInput" type="text" placeholder="Enter your name">
+        <button id="reverseButton">Reverse Name</button>
+        <p id="reversedOutput"></p>
+    </div>
+
+    <script>
+        document.getElementById('reverseButton').onclick = () => {
+            const name = document.getElementById('nameInput').value;
+            document.getElementById('reversedOutput').textContent = name.split('').reverse().join('');
+        }
+    </script>
+</body>
+</html>

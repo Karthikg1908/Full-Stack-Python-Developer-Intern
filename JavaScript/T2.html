@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex to RGB Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hex to RGB Converter</h1>
+        <label for="hexInput">Enter hex color code:</label>
+        <input type="text" id="hexInput" placeholder="#FFFFFF">
+        <button id="convertButton">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const hexInput = document.getElementById('hexInput').value;
+            const resultElement = document.getElementById('result');
+            
+            if (!/^#([0-9A-Fa-f]{6})$/.test(hexInput)) {
+                resultElement.textContent = 'Please enter a valid hex color code (eg: #FFFFFF)';
+                return;
+            }
+            
+            const hex = hexInput.slice(1);
+            const r = parseInt(hex.slice(0, 2), 16);
+            const g = parseInt(hex.slice(2, 4), 16);
+            const b = parseInt(hex.slice(4, 6), 16);
+            
+            resultElement.textContent = `RGB: ${r}, ${g}, ${b}`;
+        });
+    </script>
+
+</body>
+</html>

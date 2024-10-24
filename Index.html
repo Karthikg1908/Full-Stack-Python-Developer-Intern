@@ -6,177 +6,441 @@
     <title>Task Gallery</title>
     <style>
         /* Global Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #9b59b6, #6a89cc);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #9b59b6, #6a89cc);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        /* Container Styles */
-        .container {
-            text-align: center;
-            background-color: white;
-            border-radius: 50px;
-            padding: 50px;
-            width: 100%;
-            max-width: 800px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.7s ease;
-            overflow: hidden; /* Prevents any overflow outside the container */
-            max-height: 700px; /* Limits the height of the container */
-        }
+/* Container Styles for Left and Right Columns */
+.container {
+    display: flex;
+    width: 100%; /* Full width */
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+/* Left Column Styles */
+.left-column {
+    flex: 1; /* Take up 50% of the width */
+    background-color: #ffffff; /* White background */
+    padding: 30px; /* Increased padding */
+    border-radius: 20px 0 0 20px; /* Rounded corners */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    overflow-y: auto; /* Enable vertical scrolling for overflowing content */
+    max-height: 700px; /* Limit the height of the list */
+}
 
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 30px;
-            color: #2c3e50;
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
+/* Right Column Styles */
+.right-column {
+    flex: 1; /* Take up 50% of the width */
+    background-color: #f0f4f8; /* Light background */
+    padding: 30px; /* Increased padding */
+    border-radius: 0 20px 20px 0; /* Rounded corners */
+    box-shadow: -8px 40px 40px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    overflow-y: auto; /* Enable vertical scrolling for overflowing content */
+    max-height: 700px; /* Limit the height of the list */
+}
 
-        /* Task List Styles for 2-column Layout */
-        .task-list {
-            display: grid; /* Use grid layout */
-            grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-            gap: 20px; /* Add gap between items */
-            padding: 0;
-            list-style: none;
-            margin: 0;
-            max-width: 1000px;
-            justify-content: center;
-			align-items: center;
-            overflow-y: scroll; /* Enable vertical scrolling for overflowing content */
-            max-height: 500px; /* Limit the height of the list */
-        }
+/* Common Styles */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    letter-spacing: 1px; /* Reduced spacing for a tighter look */
+    font-weight: 700;
+    text-align: center; /* Center align the title */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
 
-        /* Individual Task Styles */
-        .task-list li {
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            position: relative;
-			justify-content: center;
-            cursor: pointer;
-            border: 1px solid #ddd;
-			align-items: center;
-            flex-shrink: 0;
-            width: 280px; /* Fixed width for each task */
-        }
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #34495e;
+    font-weight: 500;
+    text-align: center; /* Center align the subtitle */
+}
 
-        .task-list li:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: #f4f7f6;
-        }
+/* Task List Styles for 2-column Layout */
+.task-list {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
+    gap: 20px; /* Add gap between items */
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    max-width: 1000px;
+    justify-content: center;
+}
 
-        .task-list li::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background-color: #3498db;
-            bottom: 0;
-            left: 0;
-            transition: width 0.4s ease;
-        }
+/* Individual Task Styles */
+.task-list li {
+    background-color: #ffffff; /* White background for tasks */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+    width: 280px; /* Fixed width for each task */
+    text-align: center; /* Center align task text */
+}
 
-        .task-list li:hover::after {
-            width: 100%;
-        }
+.task-list li:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    background-color: #e0f7fa; /* Light cyan background on hover */
+}
 
-        /* Link Styles */
-        .task-list a {
-            text-decoration: none;
-            color: #3498db;
-            font-size: 1.3em;
-            font-weight: 600;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
+/* Link Styles */
+.task-list a {
+    text-decoration: none;
+    color: #3498db; /* Link color */
+    font-size: 1.3em;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
 
-        .task-list a:hover {
-            color: #2980b9;
-            transform: scale(1.05);
-        }
+.task-list a:hover {
+    color: #2980b9; /* Darker shade on hover */
+    transform: scale(1.05);
+}
 
-        .task-list a:active {
-            color: #1f5f8b;
-        }
+.task-list a:active {
+    color: #1f5f8b; /* Active color */
+}
 
-        .task-list a:focus {
-            outline: 3px solid #9b59b6;
-            outline-offset: 5px;
-        }
+.task-list a:focus {
+    outline: 3px solid #9b59b6; /* Focus outline color */
+    outline-offset: 5px; /* Space between outline and element */
+}
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .task-list {
-                gap: 15px; /* Reduce gap for smaller screens */
-                grid-template-columns: repeat(1, 1fr); /* Switch to single column for tablets */
-            }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .task-list {
+        gap: 15px; /* Reduce gap for smaller screens */
+        grid-template-columns: repeat(1, 1fr); /* Switch to single column for tablets */
+    }
 
-            .task-list li {
-                width: 240px; /* Smaller width on tablets */
-            }
-        }
+    .task-list li {
+        width: auto; /* Auto width on tablets */
+    }
+}
 
-        @media (max-width: 480px) {
-            .task-list li {
-                width: 200px; /* Adjust width for mobile screens */
-            }
-        }
+@media (max-width: 480px) {
+    .task-list li {
+        width: auto; /* Auto width for mobile screens */
+    }
+}
+/* Individual Task Styles */
+.task-list li {
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 280px; /* Fixed width for each task */
+    text-align: center; /* Center align task text */
+    font-size: 1.1em; /* Consistent font size */
+}
+
+/* Specific Task Background Colors */
+.task-list li:nth-child(1) {
+    background-color: #fce4ec; /* Pink */
+    border: 2px solid #f48fb1; /* Border color */
+}
+.task-list li:nth-child(2) {
+    background-color: #e1f5fe; /* Light Blue */
+    border: 2px solid #81d4fa; /* Border color */
+}
+.task-list li:nth-child(3) {
+    background-color: #fffde7; /* Light Yellow */
+    border: 2px solid #ffe57f; /* Border color */
+}
+.task-list li:nth-child(4) {
+    background-color: #e8f5e9; /* Light Green */
+    border: 2px solid #a5d6a7; /* Border color */
+}
+.task-list li:nth-child(5) {
+    background-color: #f3e5f5; /* Light Purple */
+    border: 2px solid #ce93d8; /* Border color */
+}
+.task-list li:nth-child(6) {
+    background-color: #f0f4c3; /* Light Lime */
+    border: 2px solid #dce775; /* Border color */
+}
+.task-list li:nth-child(7) {
+    background-color: #ffe0b2; /* Light Orange */
+    border: 2px solid #ffb74d; /* Border color */
+}
+.task-list li:nth-child(8) {
+    background-color: #e0f7fa; /* Light Cyan */
+    border: 2px solid #80deea; /* Border color */
+}
+.task-list li:nth-child(9) {
+    background-color: #f1f8e9; /* Light Light Green */
+    border: 2px solid #c5e1a5; /* Border color */
+}
+.task-list li:nth-child(10) {
+    background-color: #fce4ec; /* Light Pink */
+    border: 2px solid #f48fb1; /* Border color */
+}
+.task-list li:nth-child(11) {
+    background-color: #e8eaf6; /* Light Indigo */
+    border: 2px solid #9fa8da; /* Border color */
+}
+.task-list li:nth-child(12) {
+    background-color: #f3e5f5; /* Light Purple */
+    border: 2px solid #ce93d8; /* Border color */
+}
+.task-list li:nth-child(13) {
+    background-color: #e1f5fe; /* Light Blue */
+    border: 2px solid #81d4fa; /* Border color */
+}
+.task-list li:nth-child(14) {
+    background-color: #fff3e0; /* Light Peach */
+    border: 2px solid #ffcc80; /* Border color */
+}
+.task-list li:nth-child(15) {
+    background-color: #e0f2f1; /* Light Teal */
+    border: 2px solid #80cbc4; /* Border color */
+}
+.task-list li:nth-child(16) {
+    background-color: #f9fbe7; /* Light Lime */
+    border: 2px solid #c6ff00; /* Border color */
+}
+.task-list li:nth-child(17) {
+    background-color: #ffe0b2; /* Light Orange */
+    border: 2px solid #ffb74d; /* Border color */
+}
+.task-list li:nth-child(18) {
+    background-color: #e0f7fa; /* Light Cyan */
+    border: 2px solid #80deea; /* Border color */
+}
+.task-list li:nth-child(19) {
+    background-color: #f1f8e9; /* Light Green */
+    border: 2px solid #c5e1a5; /* Border color */
+}
+.task-list li:nth-child(20) {
+    background-color: #e3f2fd; /* Light Blue */
+    border: 2px solid #90caf9; /* Border color */
+}
+.task-list li:nth-child(21) {
+    background-color: #f0f4c3; /* Light Lime */
+    border: 2px solid #dce775; /* Border color */
+}
+.task-list li:nth-child(22) {
+    background-color: #ffe0b2; /* Light Orange */
+    border: 2px solid #ffb74d; /* Border color */
+}
+.task-list li:nth-child(23) {
+    background-color: #e0f7fa; /* Light Cyan */
+    border: 2px solid #80deea; /* Border color */
+}
+.task-list li:nth-child(24) {
+    background-color: #f3e5f5; /* Light Purple */
+    border: 2px solid #ce93d8; /* Border color */
+}
+.task-list li:nth-child(25) {
+    background-color: #e1f5fe; /* Light Blue */
+    border: 2px solid #81d4fa; /* Border color */
+}
+.task-list li:nth-child(26) {
+    background-color: #fffde7; /* Light Yellow */
+    border: 2px solid #ffe57f; /* Border color */
+}
+.task-list li:nth-child(27) {
+    background-color: #e8f5e9; /* Light Green */
+    border: 2px solid #a5d6a7; /* Border color */
+}
+.task-list li:nth-child(28) {
+    background-color: #fce4ec; /* Pink */
+    border: 2px solid #f48fb1; /* Border color */
+}
+.task-list li:nth-child(29) {
+    background-color: #f9fbe7; /* Light Lime */
+    border: 2px solid #c6ff00; /* Border color */
+}
+.task-list li:nth-child(30) {
+    background-color: #e0e0e0; /* Gray */
+    border: 2px solid #bdbdbd; /* Border color */
+}
+
+/* Individual Task Hover Effects */
+.task-list li:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.task-list li:hover:nth-child(1) {
+    background-color: #f8bbd0; /* Darker Pink */
+}
+.task-list li:hover:nth-child(2) {
+    background-color: #b3e5fc; /* Darker Light Blue */
+}
+.task-list li:hover:nth-child(3) {
+    background-color: #fff9c4; /* Darker Light Yellow */
+}
+.task-list li:hover:nth-child(4) {
+    background-color: #c8e6c9; /* Darker Light Green */
+}
+.task-list li:hover:nth-child(5) {
+    background-color: #e1bee7; /* Darker Light Purple */
+}
+.task-list li:hover:nth-child(6) {
+    background-color: #e6ee9c; /* Darker Light Lime */
+}
+.task-list li:hover:nth-child(7) {
+    background-color: #ffcc80; /* Darker Light Orange */
+}
+.task-list li:hover:nth-child(8) {
+    background-color: #80deea; /* Darker Light Cyan */
+}
+.task-list li:hover:nth-child(9) {
+    background-color: #c5e1a5; /* Darker Light Green */
+}
+.task-list li:hover:nth-child(10) {
+    background-color: #f8bbd0; /* Darker Pink */
+}
+.task-list li:hover:nth-child(11) {
+    background-color: #9fa8da; /* Darker Light Indigo */
+}
+.task-list li:hover:nth-child(12) {
+    background-color: #e1bee7; /* Darker Light Purple */
+}
+.task-list li:hover:nth-child(13) {
+    background-color: #81d4fa; /* Darker Light Blue */
+}
+.task-list li:hover:nth-child(14) {
+    background-color: #ffcc80; /* Darker Light Peach */
+}
+.task-list li:hover:nth-child(15) {
+    background-color: #80cbc4; /* Darker Light Teal */
+}
+.task-list li:hover:nth-child(16) {
+    background-color: #c6ff00; /* Darker Light Lime */
+}
+.task-list li:hover:nth-child(17) {
+    background-color: #ffb74d; /* Darker Light Orange */
+}
+.task-list li:hover:nth-child(18) {
+    background-color: #80deea; /* Darker Light Cyan */
+}
+.task-list li:hover:nth-child(19) {
+    background-color: #c5e1a5; /* Darker Light Green */
+}
+.task-list li:hover:nth-child(20) {
+    background-color: #90caf9; /* Darker Light Blue */
+}
+.task-list li:hover:nth-child(21) {
+    background-color: #dce775; /* Darker Light Lime */
+}
+.task-list li:hover:nth-child(22) {
+    background-color: #ffb74d; /* Darker Light Orange */
+}
+.task-list li:hover:nth-child(23) {
+    background-color: #80deea; /* Darker Light Cyan */
+}
+.task-list li:hover:nth-child(24) {
+    background-color: #ce93d8; /* Darker Light Purple */
+}
+.task-list li:hover:nth-child(25) {
+    background-color: #81d4fa; /* Darker Light Blue */
+}
+.task-list li:hover:nth-child(26) {
+    background-color: #ffe57f; /* Darker Light Yellow */
+}
+.task-list li:hover:nth-child(27) {
+    background-color: #a5d6a7; /* Darker Light Green */
+}
+.task-list li:hover:nth-child(28) {
+    background-color: #f8bbd0; /* Darker Pink */
+}
+.task-list li:hover:nth-child(29) {
+    background-color: #c6ff00; /* Darker Light Lime */
+}
+.task-list li:hover:nth-child(30) {
+    background-color: #bdbdbd; /* Darker Gray */
+}
 
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Task Gallery</h1>
-		<h3 style="font-size: 1.5em; margin-bottom: 30px; color: #34495e; font-weight: 500; font-family: 'Times New Roman', serif; text-shadow: 0 0 10px #3498db, 0 0 20px #3498db, 0 0 30px #3498db, 0 0 40px #3498db;">These are the tasks that I performed during my HTML & CSS internship phase.</h3>
-		<ul class="task-list">
-    <li><a href="HTML & CSS/Task 1.html" target="_blank" aria-label="Task 1: Simple Button">TASK 1: COMING SOON BUTTON</a></li>
-    <li><a href="HTML & CSS/Task 2.html" target="_blank" aria-label="Task 2: Newsletter Subscription">TASK 2: SPEECH BUBBLE</a></li>
-    <li><a href="HTML & CSS/Task 3.html" target="_blank" aria-label="Task 3: Grid Layout">TASK 3: COOKIE CONSENT POP-UP</a></li>
-    <li><a href="HTML & CSS/Task 4.html" target="_blank" aria-label="Task 4: Glowing Text">TASK 4: OVER-LAP BLOCK LAYOUT</a></li>
-    <li><a href="HTML & CSS/Task 5.html" target="_blank" aria-label="Task 5: Simple Navbar">TASK 5: DRAG AND DROP FILES</a></li>
-    <li><a href="HTML & CSS/Task 6.html" target="_blank" aria-label="Task 6: Error 404 Page">TASK 6: EMBED THE YOUTUBE VIDEO</a></li>
-    <li><a href="HTML & CSS/Task 7.html" target="_blank" aria-label="Task 7: Collapsible Panel">TASK 7: BOOK REVIEW</a></li>
-    <li><a href="HTML & CSS/Task 8.html" target="_blank" aria-label="Task 8: Profile Card">TASK 8: CSS GRID LAYOUT</a></li>
-    <li><a href="HTML & CSS/Task 9.html" target="_blank" aria-label="Task 9: 3D Card Flip">TASK 9: NEWSLETTER SUBSCRIPTION</a></li>
-    <li><a href="HTML & CSS/Task 10.html" target="_blank" aria-label="Task 10: Sticky Footer">TASK 10: GLOWING TEXT</a></li>
-    <li><a href="HTML & CSS/Task 11.html" target="_blank" aria-label="Task 11: Dropdown Menu">TASK 11: TOP NAVIGATION BAR</a></li>
-    <li><a href="HTML & CSS/Task 12.html" target="_blank" aria-label="Task 12: Hover Animation">TASK 12: ERROR-404</a></li>
-    <li><a href="HTML & CSS/Task 13.html" target="_blank" aria-label="Task 13: Responsive Grid">TASK 13: RESPONSIVE GRID</a></li>
-    <li><a href="HTML & CSS/Task 14.html" target="_blank" aria-label="Task 14: Image Gallery">TASK 14: PROFILE CARD</a></li>
-    <li><a href="HTML & CSS/Task 15.html" target="_blank" aria-label="Task 15: Login Form">TASK 15: COLLAPSIBLE PANEL</a></li>
-    <li><a href="HTML & CSS/Task 16.html" target="_blank" aria-label="Task 16: Card Layout">TASK 16: PROJECT TIMELINE</a></li>
-    <li><a href="HTML & CSS/Task 17.html" target="_blank" aria-label="Task 17: Sidebar Navigation">TASK 17: SERVICE PAGE</a></li>
-    <li><a href="HTML & CSS/Task 18.html" target="_blank" aria-label="Task 18: Parallax Scrolling">TASK 18: CONTACT US</a></li>
-    <li><a href="HTML & CSS/Task 19.html" target="_blank" aria-label="Task 19: Animated Loading Spinner">TASK 19: TESTIMONIALS</a></li>
-    <li><a href="HTML & CSS/Task 20.html" target="_blank" aria-label="Task 20: Dark Mode">TASK 20: PRICING TABLE</a></li>
-    <li><a href="HTML & CSS/Task 21.html" target="_blank" aria-label="Task 21: Form Elements">TASK 21: FEEDBACK FORM</a></li>
-    <li><a href="HTML & CSS/Task 22.html" target="_blank" aria-label="Task 22: Testimonial Slider">TASK 22: RESPONSIVE GRID LAYOUT</a></li>
-    <li><a href="HTML & CSS/Task 23.html" target="_blank" aria-label="Task 23: Scroll Animations">TASK 23: SKEWED SECTIONS</a></li>
-    <li><a href="HTML & CSS/Task 24.html" target="_blank" aria-label="Task 24: Accordion">TASK 24: EXPANDING MENU</a></li>
-    <li><a href="HTML & CSS/Task 25.html" target="_blank" aria-label="Task 25: Floating Action Button">TASK 25: JOB LISTING</a></li>
-    <li><a href="HTML & CSS/Task 26.html" target="_blank" aria-label="Task 26: Dark Mode">TASK 26: DASHBOARD CARDS</a></li>
-    <li><a href="HTML & CSS/Task 27.html" target="_blank" aria-label="Task 27: Form Elements">TASK 27: VERTICAL TABS</a></li>
-    <li><a href="HTML & CSS/Task 28.html" target="_blank" aria-label="Task 28: Testimonial Slider">TASK 28: EVENT INVITATION</a></li>
-    <li><a href="HTML & CSS/Task 29.html" target="_blank" aria-label="Task 29: Scroll Animations">TASK 29: FITNESS TRACKER</a></li>
-    <li><a href="HTML & CSS/Task 30.html" target="_blank" aria-label="Task 30: Accordion">TASK 30: PERSONAL PORTFOLIO</a></li>
-</ul>
+        <div class="left-column">
+            <h1>HTML & CSS Tasks</h1>
+            <h3>These are the tasks that I performed during my HTML & CSS internship phase.</h3>
+            <ul class="task-list">
+                <li><a href="HTML & CSS/Task 1.html" target="_blank" aria-label="Task 1: Simple Button">TASK 1: COMING SOON BUTTON</a></li>
+                <li><a href="HTML & CSS/Task 2.html" target="_blank" aria-label="Task 2: Newsletter Subscription">TASK 2: SPEECH BUBBLE</a></li>
+                <li><a href="HTML & CSS/Task 3.html" target="_blank" aria-label="Task 3: Grid Layout">TASK 3: COOKIE CONSENT POP-UP</a></li>
+                <li><a href="HTML & CSS/Task 4.html" target="_blank" aria-label="Task 4: Glowing Text">TASK 4: OVER-LAP BLOCK LAYOUT</a></li>
+                <li><a href="HTML & CSS/Task 5.html" target="_blank" aria-label="Task 5: Simple Navbar">TASK 5: DRAG AND DROP FILES</a></li>
+                <li><a href="HTML & CSS/Task 6.html" target="_blank" aria-label="Task 6: Error 404 Page">TASK 6: EMBED THE YOUTUBE VIDEO</a></li>
+                <li><a href="HTML & CSS/Task 7.html" target="_blank" aria-label="Task 7: Collapsible Panel">TASK 7: BOOK REVIEW</a></li>
+                <li><a href="HTML & CSS/Task 8.html" target="_blank" aria-label="Task 8: Profile Card">TASK 8: CSS GRID LAYOUT</a></li>
+                <li><a href="HTML & CSS/Task 9.html" target="_blank" aria-label="Task 9: 3D Card Flip">TASK 9: NEWSLETTER SUBSCRIPTION</a></li>
+                <li><a href="HTML & CSS/Task 10.html" target="_blank" aria-label="Task 10: Sticky Footer">TASK 10: GLOWING TEXT</a></li>
+                <li><a href="HTML & CSS/Task 11.html" target="_blank" aria-label="Task 11: Dropdown Menu">TASK 11: TOP NAVIGATION BAR</a></li>
+                <li><a href="HTML & CSS/Task 12.html" target="_blank" aria-label="Task 12: Hover Animation">TASK 12: ERROR-404</a></li>
+                <li><a href="HTML & CSS/Task 13.html" target="_blank" aria-label="Task 13: Responsive Grid">TASK 13: RESPONSIVE GRID</a></li>
+                <li><a href="HTML & CSS/Task 14.html" target="_blank" aria-label="Task 14: Image Gallery">TASK 14: PROFILE CARD</a></li>
+                <li><a href="HTML & CSS/Task 15.html" target="_blank" aria-label="Task 15: Login Form">TASK 15: COLLAPSIBLE PANEL</a></li>
+                <li><a href="HTML & CSS/Task 16.html" target="_blank" aria-label="Task 16: Card Layout">TASK 16: PROJECT TIMELINE</a></li>
+                <li><a href="HTML & CSS/Task 17.html" target="_blank" aria-label="Task 17: Sidebar Navigation">TASK 17: SERVICE PAGE</a></li>
+                <li><a href="HTML & CSS/Task 18.html" target="_blank" aria-label="Task 18: Parallax Scrolling">TASK 18: CONTACT US</a></li>
+                <li><a href="HTML & CSS/Task 19.html" target="_blank" aria-label="Task 19: Animated Loading Spinner">TASK 19: TESTIMONIALS</a></li>
+                <li><a href="HTML & CSS/Task 20.html" target="_blank" aria-label="Task 20: Dark Mode">TASK 20: PRICING TABLE</a></li>
+                <li><a href="HTML & CSS/Task 21.html" target="_blank" aria-label="Task 21: Form Elements">TASK 21: FEEDBACK FORM</a></li>
+                <li><a href="HTML & CSS/Task 22.html" target="_blank" aria-label="Task 22: Testimonial Slider">TASK 22: RESPONSIVE GRID LAYOUT</a></li>
+                <li><a href="HTML & CSS/Task 23.html" target="_blank" aria-label="Task 23: Scroll Animations">TASK 23: SKEWED SECTIONS</a></li>
+                <li><a href="HTML & CSS/Task 24.html" target="_blank" aria-label="Task 24: Accordion">TASK 24: EXPANDING MENU</a></li>
+                <li><a href="HTML & CSS/Task 25.html" target="_blank" aria-label="Task 25: Floating Action Button">TASK 25: JOB LISTING</a></li>
+                <li><a href="HTML & CSS/Task 26.html" target="_blank" aria-label="Task 26: Dark Mode">TASK 26: DASHBOARD CARDS</a></li>
+                <li><a href="HTML & CSS/Task 27.html" target="_blank" aria-label="Task 27: Form Elements">TASK 27: VERTICAL TABS</a></li>
+                <li><a href="HTML & CSS/Task 28.html" target="_blank" aria-label="Task 28: Testimonial Slider">TASK 28: EVENT INVITATION</a></li>
+                <li><a href="HTML & CSS/Task 29.html" target="_blank" aria-label="Task 29: Scroll Animations">TASK 29: FITNESS TRACKER</a></li>
+                <li><a href="HTML & CSS/Task 30.html" target="_blank" aria-label="Task 30: Accordion">TASK 30: PERSONAL PORTFOLIO</a></li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h1>JavaScript Tasks</h1>
+            <h3>These are the JavaScript tasks I worked on.</h3>
+            <ul class="task-list">
+    <li><a href="JavaScript/T1.html" target="_blank" aria-label="Task 1: Simple Button">TASK 1: BACKGROUND COLOR PICKER</a></li>
+    <li><a href="JavaScript/T2.html" target="_blank" aria-label="Task 2: Newsletter Subscription">TASK 2: NEWSLETTER SUBSCRIPTION</a></li>
+    <li><a href="JavaScript/T3.html" target="_blank" aria-label="Task 3: Grid Layout">TASK 3: COUNTDOWN TO EVENT</a></li>
+    <li><a href="JavaScript/T4.html" target="_blank" aria-label="Task 4: Glowing Text">TASK 4: NAME FORMATTER</a></li>
+    <li><a href="JavaScript/T5.html" target="_blank" aria-label="Task 5: Simple Navbar">TASK 5: USER AUTHENTICATION</a></li>
+    <li><a href="JavaScript/T6.html" target="_blank" aria-label="Task 6: Error 404 Page">TASK 6: PATTERN GENERATOR</a></li>
+    <li><a href="JavaScript/T7.html" target="_blank" aria-label="Task 7: Collapsible Panel">TASK 7: WEATHER APP (MOCK)</a></li>
+    <li><a href="JavaScript/T8.html" target="_blank" aria-label="Task 8: Profile Card">TASK 8: INTERACTIVE GREETING PAGE</a></li>
+    <li><a href="JavaScript/T9.html" target="_blank" aria-label="Task 9: 3D Card Flip">TASK 9: PERSONAL DIARY</a></li>
+    <li><a href="JavaScript/T10.html" target="_blank" aria-label="Task 10: Sticky Footer">TASK 10: SIMPLE TO-DO LIST</a></li>
+    <li><a href="JavaScript/T11.html" target="_blank" aria-label="Task 11: Dropdown Menu">TASK 11: NAME REVERSER</a></li>
+    <li><a href="JavaScript/T12.html" target="_blank" aria-label="Task 12: Hover Animation">TASK 12: MUSIC PLAYLIST</a></li>
+    <li><a href="JavaScript/T13.html" target="_blank" aria-label="Task 13: Responsive Grid">TASK 13: SIMPLE CALCULATOR</a></li>
+    <li><a href="JavaScript/T14.html" target="_blank" aria-label="Task 14: Image Gallery">TASK 14: RANDOM JOKE GENERATOR</a></li>
+    <li><a href="JavaScript/T15.html" target="_blank" aria-label="Task 15: Login Form">TASK 15: MAD LIBS GAME</a></li>
+    <li><a href="JavaScript/T16.html" target="_blank" aria-label="Task 16: Pricing Table">TASK 16: WORD COUNTER</a></li>
+	<li><a href="JavaScript/T17.html" target="_blank" aria-label="Task 17: Hover Animation">TASK 17: AGE CALCULATOR</a></li>
+    <li><a href="JavaScript/T18.html" target="_blank" aria-label="Task 18: Responsive Grid">TASK 18: POMODORO TIMER</a></li>
+    <li><a href="JavaScript/T19.html" target="_blank" aria-label="Task 19: Image Gallery">TASK 19: TEMPERATURE CONVERTER</a></li>
+    <li><a href="JavaScript/T20.html" target="_blank" aria-label="Task 20: Login Form">TASK 20: NOTES APP</a></li>
+    <li><a href="JavaScript/T21.html" target="_blank" aria-label="Task 21: Pricing Table">TASK 21: ROCK PAPER SCISSORS GAME</a></li>
 
+	</ul>
+
+        </div>
     </div>
 </body>
 </html>

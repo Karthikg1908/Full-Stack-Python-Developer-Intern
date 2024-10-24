@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Word Counter</h1>
+    <textarea id="textInput" placeholder="Type or paste text here..."></textarea>
+    
+    <p>Word Count: 
+        <span id="wordCount">0</span>
+    </p>
+    
+    <p>Character Count:
+        <span id="charCount">0</span>
+    </p>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const wordCount = document.getElementById('wordCount');
+        const charCount = document.getElementById('charCount');
+
+        textInput.addEventListener('input', () => {
+            const text = textInput.value;
+            wordCount.textContent = text.split(/\s+/).filter(word => word).length; // Count words
+            charCount.textContent = text.length; // Count characters
+        });
+    </script>
+
+</body>
+</html>

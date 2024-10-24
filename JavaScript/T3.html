@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Event</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e3e4e6;
+            font-family: Arial, sans-serif;
+        }
+
+        .countdown-event {
+            text-align: center;
+        }
+
+        input {
+            border-radius: 5px;
+            border-color: #073045;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #0688b4;
+            color: white;
+            border-radius: 10px;
+            border-color: #073045;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #days-left {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown-event">
+        <h1>Countdown to Event</h1>
+        <input type="date" id="event-date">
+        <button id="start-countdown">Start Countdown</button>
+        <p id="days-left"></p>
+    </div>
+
+    <script>
+        document.getElementById('start-countdown').addEventListener('click', () => {
+            const eventDate = new Date(document.getElementById('event-date').value);
+            const today = new Date();
+            const timeDiff = eventDate - today;
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            if (daysLeft >= 0) {
+                document.getElementById('days-left').textContent = `${daysLeft} days left until the event!`;
+            } else {
+                document.getElementById('days-left').textContent = `The event has passed`;  
+            }
+        });
+    </script>
+
+</body>
+</html>

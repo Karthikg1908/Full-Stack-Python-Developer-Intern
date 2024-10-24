@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .pattern-generator {
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #pattern {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pattern-generator">
+        <h1>Pattern Generator</h1>
+        <input type="number" id="size" placeholder="Enter size" min="1" required>
+        <button id="generate">Generate Pattern</button>
+        <div id="pattern"></div>
+    </div>
+
+    <script>
+        document.getElementById('generate').addEventListener('click', () => {
+            const size = parseInt(document.getElementById('size').value);
+            if (isNaN(size) || size < 1) {
+                document.getElementById('pattern').textContent = 'Invalid size';
+                return;
+            }
+            let pattern = '';
+            for (let i = 0; i < size; i++) {
+                pattern += '*'.repeat(i + 1) + '<br>';
+            }
+            document.getElementById('pattern').innerHTML = pattern;
+        });
+    </script>
+
+</body>
+</html>

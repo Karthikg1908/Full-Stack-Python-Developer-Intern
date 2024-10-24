@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #eef0f1;
+            font-family: Arial, sans-serif;
+        }
+
+        .weather-app {
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #1155CC;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #weather-result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="weather-app">
+        <h1>Weather App</h1>
+        <input type="text" id="city" placeholder="Enter city">
+        <button id="get-weather">Get Weather</button>
+        <div id="weather-result"></div>
+    </div>
+
+    <script>
+        const weatherData = {
+            'New York': 'Sunny, 25 deg C',
+            'London': 'Cloudy, 18 deg C',
+            'Tokyo': 'Rainy, 22 deg C'
+        };
+
+        document.getElementById('get-weather').addEventListener('click', () => {
+            const city = document.getElementById('city').value.trim();
+            const result = weatherData[city] || 'Weather data not available';
+            document.getElementById('weather-result').textContent = result;
+        });
+    </script>
+
+</body>
+</html>

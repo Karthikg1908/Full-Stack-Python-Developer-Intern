@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        li {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        li button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes App</h1>
+    <input type="text" id="noteInput" placeholder="Enter note">
+    <button id="addNote">Add Note</button>
+    <ul id="notesList"></ul>
+
+    <script>
+        const noteInput = document.getElementById('noteInput');
+        const addNote = document.getElementById('addNote');
+        const notesList = document.getElementById('notesList');
+
+        const createNoteItem = (text) => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => notesList.removeChild(li));
+            li.appendChild(deleteButton);
+            return li;
+        };
+
+        const addNewNote = () => {
+            const noteText = noteInput.value.trim();
+            if (!noteText) return;
+            notesList.appendChild(createNoteItem(noteText));
+            noteInput.value = '';
+        };
+
+        addNote.addEventListener('click', addNewNote);
+    </script>
+</body>
+</html>

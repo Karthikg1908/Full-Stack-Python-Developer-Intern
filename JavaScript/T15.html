@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Libs Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .mad-libs-game {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            width: 300px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #story {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mad-libs-game">
+        <h1>Mad Libs Game</h1>
+        <form id="madLibsForm" onsubmit="generateStory(event)">
+            <div class="form-group">
+                <label for="noun">Noun:</label>
+                <input type="text" id="noun" name="noun" required>
+            </div>
+            <div class="form-group">
+                <label for="verb">Verb:</label>
+                <input type="text" id="verb" name="verb" required>
+            </div>
+            <div class="form-group">
+                <label for="adjective">Adjective:</label>
+                <input type="text" id="adjective" name="adjective" required>
+            </div>
+            <div class="form-group">
+                <label for="adverb">Adverb:</label>
+                <input type="text" id="adverb" name="adverb" required>
+            </div>
+            <button type="submit">Generate Story</button>
+        </form>
+        <div id="story"></div>
+    </div>
+
+    <script>
+        function generateStory(event) {
+            event.preventDefault();
+            const noun = document.getElementById('noun').value.trim();
+            const verb = document.getElementById('verb').value.trim();
+            const adjective = document.getElementById('adjective').value.trim();
+            const adverb = document.getElementById('adverb').value.trim();
+
+            if (noun === '' || verb === '' || adjective === '' || adverb === '') {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const story = `Once upon a time, there was a ${adjective} ${noun} who loved to ${verb} ${adverb}.`;
+            document.getElementById('story').textContent = story;
+        }
+    </script>
+
+</body>
+</html>

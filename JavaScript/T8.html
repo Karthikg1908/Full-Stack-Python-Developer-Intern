@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="text">Hello User!</h1>
+    <button id="person1-btn">Person 1</button>
+    <button id="person2-btn">Person 2</button>
+
+    <script>
+        function greetPerson1() {
+            var content = document.getElementById('text');
+            content.innerText = 'Hello Person 1';
+        }
+
+        function greetPerson2() {
+            var content = document.getElementById('text');
+            content.innerText = 'Hello Person 2';
+        }
+
+        document.getElementById('person1-btn').addEventListener('click', greetPerson1);
+        document.getElementById('person2-btn').addEventListener('click', greetPerson2);
+    </script>
+
+</body>
+</html>

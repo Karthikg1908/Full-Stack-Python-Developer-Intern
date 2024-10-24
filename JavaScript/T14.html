@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; 
+        }
+        .joke-generator { 
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        button {
+            background-color: #1155CC;
+            color: white;
+            border-radius: 10px; 
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="joke-generator">
+        <h1>Random Joke Generator</h1>
+        <button id="get-joke">Get a Joke</button>
+        <p id="joke"></p>
+    </div>
+
+    <script>
+        const jokes = [
+            "Why do not scientists trust atoms? Because they make up everything!",
+            "How does a penguin build its house? Igloos it together!",
+            "Why was the math book sad? Because it had too many problems.",
+            "Why do not skeletons fight each other? They do not have the guts.",
+            "What do you call fake spaghetti? An impasta!"
+        ];
+
+        document.getElementById('get-joke').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            document.getElementById('joke').textContent = jokes[randomIndex];
+        });
+    </script>
+
+</body>
+</html>
