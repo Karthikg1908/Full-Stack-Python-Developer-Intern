@@ -5,141 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Gallery</title>
     <style>
-        /* Global Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #9b59b6, #6a89cc);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+/* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #9b59b6, #6a89cc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-/* Container Styles for Left and Right Columns */
-.container {
-    display: flex;
-    width: 80%; /* Set a specific width for better control */
-}
+        /* Container Styles */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
 
-/* Left Column Styles */
-.left-column {
-    flex: 1; /* Take up 50% of the width */
-    background-color: #ffffff; /* White background */
-    padding: 30px; /* Increased padding */
-    border-radius: 15px; /* Adjusted border radius */
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    overflow-y: auto; /* Enable vertical scrolling for overflowing content */
-    max-height: 700px; /* Limit the height of the list */
-}
+        /* Common Styles */
+        h1, h3 {
+            text-align: center;
+            color: #2c3e50;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
 
-/* Right Column Styles */
-.right-column {
-    flex: 1; /* Take up 50% of the width */
-    background-color: #f0f4f8; /* Light background */
-    padding: 30px; /* Increased padding */
-    border-radius: 15px; /* Adjusted border radius */
-    box-shadow: -8px 40px 40px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    overflow-y: auto; /* Enable vertical scrolling for overflowing content */
-    max-height: 700px; /* Limit the height of the list */
-    margin-left: 20px; /* Add left margin to create space between columns */
-}
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
 
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
 
-/* Common Styles */
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #2c3e50;
-    letter-spacing: 1px; /* Reduced spacing for a tighter look */
-    font-weight: 700;
-    text-align: center; /* Center align the title */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Softer shadow */
-}
+        /* Task List Styles */
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
 
-h3 {
-    font-size: 1.5em;
-    margin-bottom: 30px;
-    color: #34495e;
-    font-weight: 500;
-    text-align: center; /* Center align the subtitle */
-}
+        /* Individual Task Styles */
+        .task-list li {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
 
-/* Task List Styles for 2-column Layout */
-.task-list {
-    display: grid; /* Use grid layout */
-    grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-    gap: 20px; /* Add gap between items */
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    max-width: 1000px;
-    justify-content: center;
-}
+        .task-list li:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            background-color: #e0f7fa;
+        }
 
-/* Individual Task Styles */
-.task-list li {
-    background-color: #ffffff; /* White background for tasks */
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    position: relative;
-    justify-content: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    flex-shrink: 0;
-    width: 280px; /* Fixed width for each task */
-    text-align: center; /* Center align task text */
-}
+        /* Link Styles */
+        .task-list a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 1.3em;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
 
-.task-list li:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    background-color: #e0f7fa; /* Light cyan background on hover */
-}
+        .task-list a:hover {
+            color: #2980b9;
+            transform: scale(1.05);
+        }
 
-/* Link Styles */
-.task-list a {
-    text-decoration: none;
-    color: #3498db; /* Link color */
-    font-size: 1.3em;
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
+        /* Specific Task Background Colors */
+        .task-list li:nth-child(odd) { background-color: #fce4ec; }
+        .task-list li:nth-child(even) { background-color: #e1f5fe; }
 
-.task-list a:hover {
-    color: #2980b9; /* Darker shade on hover */
-    transform: scale(1.05);
-}
-
-.task-list a:active {
-    color: #1f5f8b; /* Active color */
-}
-
-.task-list a:focus {
-    outline: 3px solid #9b59b6; /* Focus outline color */
-    outline-offset: 5px; /* Space between outline and element */
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .task-list {
-        gap: 15px; /* Reduce gap for smaller screens */
-        grid-template-columns: repeat(1, 1fr); /* Switch to single column for tablets */
-    }
-
-    .task-list li {
-        width: auto; /* Auto width on tablets */
-    }
-}
-
-@media (max-width: 480px) {
-    .task-list li {
-        width: auto; /* Auto width for mobile screens */
-    }
-}
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .task-list {
+                grid-template-columns: 1fr;
+            }
+        }
 /* Individual Task Styles */
 .task-list li {
     padding: 25px;
@@ -373,6 +331,8 @@ h3 {
 .task-list li:hover:nth-child(30) {
     background-color: #bdbdbd; /* Darker Gray */
 }
+
+
 
     </style>
 </head>
