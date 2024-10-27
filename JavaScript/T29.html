@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Changed from -10vh to 100vh */
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-validation {
+            text-align: left;
+            max-width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-validation h1 {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-validation">
+        <h1>Simple Form Validation</h1>
+        <form id="myForm" class="form-column">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('myForm');
+            const message = document.getElementById('message');
+
+            function showMessage(msg, className) {
+                message.textContent = msg;
+                message.className = className;
+                setTimeout(function() {
+                    message.textContent = '';
+                    message.className = '';
+                }, 3000);
+            }
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (username === '' || email === '' || password === '') {
+                    showMessage('Please fill in all fields', 'error');
+                } else if (!isValidEmail(email)) {
+                    showMessage('Please enter a valid email address', 'error');
+                } else {
+                    showMessage('Form submitted successfully', 'success');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

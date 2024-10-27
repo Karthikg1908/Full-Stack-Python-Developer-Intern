@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        .stopwatch {
+            text-align: center;
+        }
+        #display {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch">
+        <h1>Stopwatch</h1>
+        <p id="display">00:00:00</p>
+        <button id="startStopButton" onclick="startStop()">Start</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        let timer;
+        let startTime;
+        let running = false;
+        let elapsedTime = 0;
+
+        function pad(num) {
+            return num.toString().padStart(2, '0');
+        }
+
+        function displayTime(time) {
+            const milliseconds = Math.floor(time % 1000 / 10);
+            const seconds = Math.floor(time / 1000 % 60);
+            const minutes = Math.floor(time / 60000 % 60);
+            const hours = Math.floor(time / 3600000);
+            const display = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+            document.getElementById('display').textContent = display;
+        }
+
+        function updateTime() {
+            const currentTime = Date.now();
+            elapsedTime = currentTime - startTime;
+            displayTime(elapsedTime);
+        }
+
+        function reset() {
+            clearInterval(timer);
+            running = false;
+            elapsedTime = 0;
+            document.getElementById('startStopButton').textContent = 'Start';
+            displayTime(elapsedTime);
+        }
+
+        function startStop() {
+            if (!running) {
+                startTime = Date.now() - elapsedTime;
+                timer = setInterval(updateTime, 10);
+                document.getElementById('startStopButton').textContent = 'Stop';
+            } else {
+                clearInterval(timer);
+                document.getElementById('startStopButton').textContent = 'Start';
+            }
+            running = !running;
+        }
+
+        window.onload = displayTime(elapsedTime);
+    </script>
+</body>
+</html>
+

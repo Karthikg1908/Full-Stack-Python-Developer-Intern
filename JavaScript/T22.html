@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .shopping-list {
+            text-align: center;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shopping-list">
+        <h1>Shopping List</h1>
+        <form id="addItemForm" onsubmit="addItem(event)">
+            <input type="text" id="item" placeholder="Add an item">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="shoppingItems"></ul>
+    </div>
+
+    <script>
+        function addItem(event) {
+            event.preventDefault();
+            const itemInput = document.getElementById('item');
+            const itemName = itemInput.value.trim();
+            if (itemName === '') {
+                alert('Please enter an item name.');
+                return;
+            }
+            const shoppingList = document.getElementById('shoppingItems');
+            const li = document.createElement('li');
+            li.textContent = itemName;
+            shoppingList.appendChild(li);
+            itemInput.value = '';
+        }
+    </script>
+
+</body>
+</html>
+
