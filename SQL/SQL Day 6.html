@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 6</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 6 of Internship</h1>
+
+    <div class="query-container">
+        <h2>1. The academic office wants to identify students whose CGPA falls between 6 and 8 (inclusive) for a special improvement program. Write a query to find the USN, first name, and CGPA of these students.</h2>
+        <pre><code>SELECT Usn,First_name,CGPA FROM Students WHERE CGPA BETWEEN 6 AND 8</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,CGPA FROM Students WHERE CGPA BETWEEN 6 AND 8', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. List College names with Unknown Date of Build.</h2>
+        <pre><code>SELECT College FROM Colleges WHERE Date_of_build IS NULL</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College FROM Colleges WHERE Date_of_build IS NULL', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. Due to economic conditions, certain companies have decided to decrease the package of students by 20%. Write an SQL query to show the Student's USN, Current Package, and Decreased_Package of the students as 'Decreased_Package' accordingly.</h2>
+        <pre><code>SELECT Usn,package,package * 0.80 AS Decreased_Package FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,package,package * 0.80 AS Decreased_Package FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. The placement cell wants to identify companies that offer packages between 300,000 and 800,000 for mid-level roles. Write a query to list the names of these companies.</h2>
+        <pre><code>SELECT Company_name FROM Companies WHERE Package BETWEEN 300000 AND 800000</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies WHERE Package BETWEEN 300000 AND 800000', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. A College is reviewing some data and wants to display the full names of lecturers along with their designations to ensure proper identification separated by '-' displayed in a field named 'Name_Designation'.</h2>
+        <pre><code>SELECT CONCAT(First_name,'-', Designation) AS Name_Designation FROM Lecturers;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CONCAT(First_name,\'-\', Designation) AS Name_Designation FROM Lecturers;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. List College names with Known Date of Build.</h2>
+        <pre><code>SELECT College FROM Colleges WHERE Date_of_build IS NOT NULL;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College FROM Colleges WHERE Date_of_build IS NOT NULL;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. In a university, administrators are curious about the lengths of branch names across different colleges to ensure consistency in database entry. They want to see the branch names and their respective lengths in a field named 'Branch_Name_Length'.</h2>
+        <pre><code>SELECT Branch_name, LENGTH(Branch_name) AS Branch_Name_Length FROM Branches;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch_name, LENGTH(Branch_name) AS Branch_Name_Length FROM Branches;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. The college wants to identify students who are eligible for the Dean's List, which requires a CGPA between 8 and 9 (inclusive). Write a query to find the USN and first name of these students.</h2>
+        <pre><code>SELECT Usn,First_name FROM Students WHERE CGPA BETWEEN 8 AND 9;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name FROM Students WHERE CGPA BETWEEN 8 AND 9;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. Assume you are tasked with enhancing student's motivation by rewarding a hike of 15% to their Current Package. Write a SQL query to show the Student's USN, Current Package, and the Increased Package field named as 'Increased_Package' of the students accordingly.</h2>
+        <pre><code>SELECT Usn,package,package * 1.15 AS Increased_Package FROM Students;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,package,package * 1.15 AS Increased_Package FROM Students;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. The academic committee is reviewing subjects taught in semester 5 or 6 for a curriculum update. Write a query to retrieve the subject names and hours for these subjects using the IN operator.</h2>
+        <pre><code>SELECT Subject_name,Hours FROM Subjects WHERE Semester IN (5,6)</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name,Hours FROM Subjects WHERE Semester IN (5,6)', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. The academic committee needs to find the student's USN and Test 2 Marks between 15 and 20. Write a query to retrieve the Usn, Subject ID (SID), and Test2 marks.</h2>
+        <pre><code>SELECT Usn,SID,Test2 FROM Marks WHERE Test2 BETWEEN 15 AND 20</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,SID,Test2 FROM Marks WHERE Test2 BETWEEN 15 AND 20', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. The placement cell wants to invite companies that offer packages of 400,000 or 1,200,000 for the upcoming recruitment drive. Write a query to list the names of these companies using IN operator.</h2>
+        <pre><code>SELECT Company_name FROM Companies WHERE Package IN (400000,1200000)</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies WHERE Package IN (400000,1200000)', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. A researcher is studying student names and their lengths across different departments. They want to find the names of students and their lengths as Name_Length for those whose names are longer than 5 characters.</h2>
+        <pre><code>SELECT First_name, LEN(First_name) AS Name_length FROM Students WHERE LEN(First_name) > 5</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name, LEN(First_name) AS Name_length FROM Students WHERE LEN(First_name) > 5', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. The administration wants to identify lecturers who have designations indicating a medium level of experience (e.g., Assistant Professor to Associate Professor). Write a query to list the first names and designations of these lecturers.</h2>
+        <pre><code>SELECT First_name,Designation FROM Lecturers WHERE Designation IN('Assistant Professor', 'Associate Professor')</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,Designation FROM Lecturers WHERE Designation IN(\'Assistant Professor\', \'Associate Professor\')', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. As an educational analyst, you are tasked with calculating the total percentage marks obtained by each student based on their performance in Test1, Test2, and Test3. Each test has a maximum possible score of 30. Write a SQL query to compute and display the USN, Subject ID (SID), Test1, Test2, Test3, and total percentage marks as a field named 'Total_Percentage' for each student.</h2>
+        <pre><code>SELECT USN,SID, Test1,Test2,Test3,((Test1 + Test2 + Test3) / 90.0) * 100 AS Total_Percentage FROM Marks;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT USN,SID, Test1,Test2,Test3,((Test1 + Test2 + Test3) / 90.0) * 100 AS Total_Percentage FROM Marks;', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            var textarea = document.createElement("textarea");
+            textarea.value = query;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            button.classList.add("copied");
+            button.innerText = "Copied!";
+            
+            setTimeout(function() {
+                button.classList.remove("copied");
+                button.innerText = "Copy";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+

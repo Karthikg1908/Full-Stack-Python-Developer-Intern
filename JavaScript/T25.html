@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        .countdown-container {
+            text-align: center;
+        }
+        input {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #countdown {
+            margin-top: 20px;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>Countdown Timer</h1>
+        <input type="number" id="minutes" placeholder="Enter minutes">
+        <button onclick="startTimer()">Start Timer</button>
+        <div id="countdown"></div>
+    </div>
+    <script>
+        let countdownInterval;
+        function startTimer() {
+            const minutes = parseInt(document.getElementById('minutes').value);
+            if (isNaN(minutes)) {
+                alert('Please enter a valid number of minutes');
+                return;
+            }
+            const countdownElement = document.getElementById('countdown');
+            let timeRemaining = minutes * 60;
+            countdownInterval = setInterval(() => {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                if (timeRemaining === 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = 'Time is up!';
+                }
+                timeRemaining--;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+

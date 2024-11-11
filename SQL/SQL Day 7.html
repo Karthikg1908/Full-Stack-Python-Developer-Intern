@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 7</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 7 of Internship</h1>
+
+    <div class="query-container">
+        <h2>1. A content writer is editing college profiles and wants to get the college name, and the field named 'Updated_location' obtained by replacing 'Bengaluru' with 'Bengalore' in the location descriptions to ensure accuracy.</h2>
+        <pre><code>SELECT College, REPLACE(Location, 'Bengaluru', 'Bengalore') AS Updated_location FROM Colleges</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, REPLACE(Location, \'Bengaluru\', \'Bengalore\') AS Updated_location FROM Colleges', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. A curriculum developer is searching for courses and needs the list of subject names and want to locate the position of 'Python' in subject names to ensure proper categorization displayed as 'Position_of_Python'.</h2>
+        <pre><code>SELECT Subject_name, CHARINDEX('Python', Subject_name) AS Position_of_Python FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name, CHARINDEX(\'Python\', Subject_name) AS Position_of_Python FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. An auditor is reviewing the college and its locations displayed as 'Position_in_location' and wants to find the position of 'Bengaluru' in each location to verify the accuracy of regional data.</h2>
+        <pre><code>SELECT College, CHARINDEX('Bengaluru', Location) AS Position_in_location FROM Colleges</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, CHARINDEX(\'Bengaluru\', Location) AS Position_in_location FROM Colleges', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. A marketing manager is preparing promotional materials and needs to display company names in lowercase as 'Lowercase_company' along with their respective package amounts.</h2>
+        <pre><code>SELECT LOWER(Company_name) AS Lowercase_company, Package FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT LOWER(Company_name) AS Lowercase_company, Package FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. In an academic review, a dean wants to see the names of all lecturers in uppercase to facilitate easier communication and recognition displaying it in the field named 'Uppercase_Name'.</h2>
+        <pre><code>SELECT UPPER(First_name) AS Uppercase_Name FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT UPPER(First_name) AS Uppercase_Name FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. A researcher is analyzing subject data and wants to list the subject name and field named 'subject_code' extracted from the first 3 characters of subject names.</h2>
+        <pre><code>SELECT Subject_name, SUBSTRING(Subject_name, 1, 3) AS Subject_code FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name, SUBSTRING(Subject_name, 1, 3) AS Subject_code FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. An admissions officer reviews student data and prefers to see the student USN and their respective branch in lowercase displayed as 'Lowercase_Branch' for better readability and uniformity.</h2>
+        <pre><code>SELECT Usn, LOWER(Branch) AS Lowercase_Branch FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, LOWER(Branch) AS Lowercase_Branch FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. A database administrator is performing some fun checks and wants to check the student's names in reverse order to check how it looks, so help him in listing the actual student name and reversed student name displayed in the field name 'Reversed_Student_Name'.</h2>
+        <pre><code>SELECT First_name, REVERSE(First_name) AS Reversed_Student_Name FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name, REVERSE(First_name) AS Reversed_Student_Name FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. A financial analyst is compiling reports on company packages. They need a concise summary of company names and their corresponding package amounts separated by ':' displayed in the field named 'Company_Package'.</h2>
+        <pre><code>SELECT CONCAT(Company_name, ':', Package) AS Company_Package FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CONCAT(Company_name, \':\', Package) AS Company_Package FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. A database manager is standardizing data and wants to see the college names and their respective locations in uppercase displayed as a field name 'Uppercase_Location'.</h2>
+        <pre><code>SELECT College, UPPER(Location) AS Uppercase_Location FROM Colleges</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, UPPER(Location) AS Uppercase_Location FROM Colleges', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. A career counselor is updating job titles and wants to replace 'Engineer' with 'Developer' in all job roles for better alignment with current industry terminology, and wants to know how it looks after the changes, help him to fetch the Student USN, actual job role and new job role displayed as field named 'new_job_role'.</h2>
+        <pre><code>SELECT Usn, Job_role, REPLACE(Job_role, 'Engineer', 'Developer') AS new_job_role FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, Job_role, REPLACE(Job_role, \'Engineer\', \'Developer\') AS new_job_role FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. A professor is evaluating student performance and wants to round the CGPA of students to the nearest integer for grading purposes, help to fetch the Student USN, Name and the Rounded CGPA displayed as a field named 'Rounded_CGPA'.</h2>
+        <pre><code>SELECT Usn, First_name, ROUND(CGPA, 0) AS Rounded_CGPA FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, First_name, ROUND(CGPA, 0) AS Rounded_CGPA FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. A student is preparing for an exam and needs to remember the last 5 characters of their unique student number for registration purposes so list his actual serial number and the field named 'Last_five_chars' from his actual serial number.</h2>
+        <pre><code>SELECT Usn, RIGHT(Usn, 5) AS Last_five_chars FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, RIGHT(Usn, 5) AS Last_five_chars FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. A lecturer is curious about the reversed names of their colleagues to see if any hidden messages or patterns emerge from it, so can you help them to list the lecturer's names displayed as 'Reversed_name'.</h2>
+        <pre><code>SELECT REVERSE(First_name) AS Reversed_name FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT REVERSE(First_name) AS Reversed_name FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. A finance manager of the Company is preparing financial reports and wants to represent the Package offered in 'K', ie., in thousands, and round that to the nearest tens for accurate budgeting. So display the list of Company_name, normal package, and the new Package displayed as 'Rounded_Package_in_K'.</h2>
+        <pre><code>SELECT Company_name, Package, ROUND(Package / 1000.0 / 100.0, 0) * 100 AS Rounded_Package_in_K FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name, Package, ROUND(Package / 1000.0 / 100.0, 0) * 100 AS Rounded_Package_in_K FROM Companies', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            var textarea = document.createElement("textarea");
+            textarea.value = query;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            button.classList.add("copied");
+            button.innerText = "Copied!";
+            
+            setTimeout(function() {
+                button.classList.remove("copied");
+                button.innerText = "Copy";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+

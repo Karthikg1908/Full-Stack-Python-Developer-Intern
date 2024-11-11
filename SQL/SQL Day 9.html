@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 9</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 9 of Internship</h1>
+
+    <!-- Query 1 -->
+    <div class="query-container">
+        <h2>1. Sum up the number of students placed with each company to assess their engagement and effectiveness in student placements.</h2>
+        <pre><code>SELECT Company_name, SUM(Students_placed) AS Total_Placed FROM Companies GROUP BY Company_name</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name, SUM(Students_placed) AS Total_Placed FROM Companies GROUP BY Company_name', this)">Copy</button>
+    </div>
+
+    <!-- Query 2 -->
+    <div class="query-container">
+        <h2>2. Identify branches with CGPA average below 7. Display the branch and calculate the average CGPA per branch.</h2>
+        <pre><code>SELECT Branch, AVG(CGPA) AS Avg_CGPA FROM Students GROUP BY Branch HAVING AVG(CGPA) < 7</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch, AVG(CGPA) AS Avg_CGPA FROM Students GROUP BY Branch HAVING AVG(CGPA) < 7', this)">Copy</button>
+    </div>
+
+    <!-- Query 3 -->
+    <div class="query-container">
+        <h2>3. Display the company ID and count the distinct job roles offered by each company.</h2>
+        <pre><code>SELECT CID, COUNT(DISTINCT Job_role) AS Total_Job_Roles FROM Students GROUP BY CID</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CID, COUNT(DISTINCT Job_role) AS Total_Job_Roles FROM Students GROUP BY CID', this)">Copy</button>
+    </div>
+
+    <!-- Query 4 -->
+    <div class="query-container">
+        <h2>4. Calculate the total number of students placed by all companies.</h2>
+        <pre><code>SELECT SUM(Students_placed) AS Total_Students_Placed FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT SUM(Students_placed) AS Total_Students_Placed FROM Companies', this)">Copy</button>
+    </div>
+
+    <!-- Query 5 -->
+    <div class="query-container">
+        <h2>5. Calculate the average CGPA for each branch to identify trends and areas where academic support may be needed.</h2>
+        <pre><code>SELECT Branch, AVG(CGPA) AS Avg_CGPA FROM Students GROUP BY Branch</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch, AVG(CGPA) AS Avg_CGPA FROM Students GROUP BY Branch', this)">Copy</button>
+    </div>
+
+    <!-- Query 6 -->
+    <div class="query-container">
+        <h2>6. Calculate the total subject hours for all subjects combined.</h2>
+        <pre><code>SELECT SUM(Hours) AS Total_Subject_Hours FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT SUM(Hours) AS Total_Subject_Hours FROM Subjects', this)">Copy</button>
+    </div>
+
+    <!-- Query 7 -->
+    <div class="query-container">
+        <h2>7. Calculate the total Test2 scores for all students across all subjects.</h2>
+        <pre><code>SELECT SUM(Test2) AS Total_Test2_Scores FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT SUM(Test2) AS Total_Test2_Scores FROM Marks', this)">Copy</button>
+    </div>
+
+    <!-- Query 8 -->
+    <div class="query-container">
+        <h2>8. Count the number of lecturers in each college to manage faculty development programs.</h2>
+        <pre><code>SELECT College, COUNT(LID) AS Total_Lecturers FROM Lecturers GROUP BY College</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, COUNT(LID) AS Total_Lecturers FROM Lecturers GROUP BY College', this)">Copy</button>
+    </div>
+
+    <!-- Query 9 -->
+    <div class="query-container">
+        <h2>9. Count the number of students in each branch categorized by gender.</h2>
+        <pre><code>SELECT Branch, Gender, COUNT(*) AS Total_Students FROM Students GROUP BY Branch, Gender</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch, Gender, COUNT(*) AS Total_Students FROM Students GROUP BY Branch, Gender', this)">Copy</button>
+    </div>
+
+    <!-- Query 10 -->
+    <div class="query-container">
+        <h2>10. Count the number of subjects offered in each semester.</h2>
+        <pre><code>SELECT Semester, COUNT(*) AS Subjects_Count FROM Subjects GROUP BY Semester</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Semester, COUNT(*) AS Subjects_Count FROM Subjects GROUP BY Semester', this)">Copy</button>
+    </div>
+
+    <!-- Query 11 -->
+    <div class="query-container">
+        <h2>11. Identify job roles with an average package less than 500000.</h2>
+        <pre><code>SELECT Job_role, AVG(Package) AS Avg_Package FROM Students GROUP BY Job_role HAVING AVG(Package) < 500000</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Job_role, AVG(Package) AS Avg_Package FROM Students GROUP BY Job_role HAVING AVG(Package) < 500000', this)">Copy</button>
+    </div>
+
+    <!-- Query 12 -->
+    <div class="query-container">
+        <h2>12. Identify companies that have not offered a job role in the last year.</h2>
+        <pre><code>SELECT DISTINCT Company_name FROM Companies WHERE Company_name NOT IN (SELECT DISTINCT Company_name FROM Students WHERE Year = 2023)</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT DISTINCT Company_name FROM Companies WHERE Company_name NOT IN (SELECT DISTINCT Company_name FROM Students WHERE Year = 2023)', this)">Copy</button>
+    </div>
+
+    <!-- Query 13 -->
+    <div class="query-container">
+        <h2>13. Identify the subjects with more than 60 hours of total study time.</h2>
+        <pre><code>SELECT Subject_name, SUM(Hours) AS Total_Hours FROM Subjects GROUP BY Subject_name HAVING SUM(Hours) > 60</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name, SUM(Hours) AS Total_Hours FROM Subjects GROUP BY Subject_name HAVING SUM(Hours) > 60', this)">Copy</button>
+    </div>
+
+    <!-- Query 14 -->
+    <div class="query-container">
+        <h2>14. List the students who have a CGPA greater than 8 and were placed.</h2>
+        <pre><code>SELECT Name FROM Students WHERE CGPA > 8 AND Placed = 'Yes'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Name FROM Students WHERE CGPA > 8 AND Placed = \'Yes\'', this)">Copy</button>
+    </div>
+
+    <!-- Query 15 -->
+    <div class="query-container">
+        <h2>15. Get the list of students who have not appeared for Test1 and Test2.</h2>
+        <pre><code>SELECT Name FROM Students WHERE Test1 IS NULL AND Test2 IS NULL</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Name FROM Students WHERE Test1 IS NULL AND Test2 IS NULL', this)">Copy</button>
+    </div>
+
+    <script>
+        // Function to copy SQL query to clipboard
+        function copyToClipboard(query, button) {
+            // Create a temporary textarea element to hold the SQL code
+            const textArea = document.createElement('textarea');
+            textArea.value = query;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            // Update the button to show "Copied"
+            button.classList.add('copied');
+            button.textContent = 'Copied!';
+
+            // Reset button text after 2 seconds
+            setTimeout(function() {
+                button.classList.remove('copied');
+                button.textContent = 'Copy';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+

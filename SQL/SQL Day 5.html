@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 5</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 5 of Internship</h1>
+
+    <!-- SQL Queries List -->
+
+    <div class="query-container">
+        <h2>1. Retrieve all information about the Lecturers who work in College 'KSIT10' and teach Subject ID (SID) '24SQL'.</h2>
+        <pre><code>SELECT * FROM Lecturers WHERE College = 'KSIT10' AND SID = '24SQL'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Lecturers WHERE College = \'KSIT10\' AND SID = \'24SQL\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. The college is organizing a special workshop for students with USNs '1SW24CS001' or '1SW24IS001'. Write a query to find the first names and branches of these students using IN Operator.</h2>
+        <pre><code>SELECT First_name,Branch FROM Students WHERE Usn IN ('1SW24CS001', '1SW24IS001');</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,Branch FROM Students WHERE Usn IN (\'1SW24CS001\', \'1SW24IS001\');', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. The administration wants to invite lecturers from the colleges 'KSIT10' or 'SIT10' for a faculty development program. Write a query to list the first names and designations of these lecturers using IN Operator.</h2>
+        <pre><code>SELECT First_name,Designation FROM Lecturers WHERE College IN ('KSIT10','SIT10');</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,Designation FROM Lecturers WHERE College IN (\'KSIT10\',\'SIT10\');', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. Retrieve all the information from students marks where Subject CGPA is not greater than 7.5 and Test 1 marks are not greater than or equal to 25. (Using NOT Clause)</h2>
+        <pre><code>SELECT * FROM Marks WHERE NOT (Subject_CGPA > 7.5) AND NOT (Test1 >= 25);</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks WHERE NOT (Subject_CGPA > 7.5) AND NOT (Test1 >= 25);', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. Retrieve all information about the Student's Marks who have scored at least 20 in Test1 but less than 20 in other two tests.</h2>
+        <pre><code>SELECT * FROM Marks WHERE Test1 >= 20 AND Test2 < 20 AND Test3 < 20;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks WHERE Test1 >= 20 AND Test2 < 20 AND Test3 < 20;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. Retrieve all information about Lecturers who are Designated as 'HOD' or teach in Branch 'CSE3'</h2>
+        <pre><code>SELECT * FROM Lecturers WHERE Designation = 'HOD' AND Branch = 'CSE3'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Lecturers WHERE Designation = \'HOD\' AND Branch = \'CSE3\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. Retrieve all information for the companies that offer Package Greater than 5 Lakh or the Number of Students Placed is at least 2.</h2>
+        <pre><code>SELECT * FROM Companies WHERE Package > 500000 OR Students_placed >=2</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Companies WHERE Package > 500000 OR Students_placed >=2', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. A scholarship is being offered to students who have a CGPA of 7.8 or 9. Write a query to find the USN and first name of these students using IN Operator.</h2>
+        <pre><code>SELECT Usn,First_name FROM Students WHERE CGPA IN (7.8,9)</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name FROM Students WHERE CGPA IN (7.8,9)', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. Retrieve Student Usn, Name, Company ID (CID), and Package of all the Students who either have a job role of 'Data Analyst' with a package above 5 lakhs or have a CGPA of at least 9.</h2>
+        <pre><code>SELECT Usn,First_name,CID,Package FROM Students WHERE (Job_role='Data Analyst' AND Package >500000) OR cgpa >= 9;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,CID,Package FROM Students WHERE (Job_role=\'Data Analyst\' AND Package >500000) OR cgpa >= 9;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. Retrieve the Names and Packages of the Students who have a job role of 'Data Analyst' with a package above 6 lakhs or joined after August 2024.</h2>
+        <pre><code>SELECT First_name,Package FROM Students WHERE (Job_role = 'Data Analyst' AND Package>600000) OR DOJ >'2024-08-31';</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,Package FROM Students WHERE (Job_role = \'Data Analyst\' AND Package>600000) OR DOJ >\'2024-08-31\';', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. Retrieve the First_name, College, and Package of all students who have a Package greater than 5 Lakh, are in the 'Data Analyst' job role, and joined the college (DOJ) from August 2024.</h2>
+        <pre><code>SELECT First_name,College,Package FROM Students WHERE Job_role ='Data Analyst' AND PACKAGE > 500000 AND DOJ >= '2024-08-01';</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,College,Package FROM Students WHERE Job_role =\'Data Analyst\' AND PACKAGE > 500000 AND DOJ >= \'2024-08-01\';', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. Retrieve all information from Students Marks who have scored less than 20 on any of the Tests, but have Scored at least 7 Subject CGPA.</h2>
+        <pre><code>SELECT * FROM Marks WHERE (Test1 < 20 OR Test2 < 20 OR Test3 < 20) AND Subject_CGPA >= 7;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks WHERE (Test1 < 20 OR Test2 < 20 OR Test3 < 20) AND Subject_CGPA >= 7;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. Retrieve Last 5 Students USN, Subject ID (SID), and Subject CGPA who have the least Subject CGPA.</h2>
+        <pre><code>SELECT Usn,SID,Subject_CGPA FROM Marks ORDER BY Subject_CGPA ASC LIMIT 5;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,SID,Subject_CGPA FROM Marks ORDER BY Subject_CGPA ASC LIMIT 5;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. Retrieve the USN, Subject ID (SID), and CGPA of all students who have either Scored at least 30 in Test1 for Subject ID '24SQL', or Scored at least 25 in Test2 for Subject ID '24HTML', but whose Subject CGPA is not greater than 9.</h2>
+        <pre><code>SELECT Usn,SID,Subject_CGPA FROM Marks WHERE ((SID = '24SQL' AND Test1 >= 30) OR SID = '24HTML' AND Test2 >= 25) AND Subject_CGPA <=9;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,SID,Subject_CGPA FROM Marks WHERE ((SID = \'24SQL\' AND Test1 >= 30) OR SID = \'24HTML\' AND Test2 >= 25) AND Subject_CGPA <=9;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. Retrieve the First_name, Branch, and CGPA of all male students who joined the college (DOJ) from August 2024, have a CGPA greater than 7, and are either in Branch 'CSE1' or 'CSE2'.</h2>
+        <pre><code>SELECT First_name, Branch, CGPA FROM Students WHERE DOJ >= '2024-08-01' AND CGPA > 7 AND Branch IN ('CSE1', 'CSE2') AND Gender = 'M'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name, Branch, CGPA FROM Students WHERE DOJ >= \'2024-08-01\' AND CGPA > 7 AND Branch IN (\'CSE1\', \'CSE2\') AND Gender = \'M\'', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(query).then(function() {
+                // Change button style and text after copying
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                alert('Failed to copy text');
+            });
+        }
+    </script>
+
+</body>
+</html>
+

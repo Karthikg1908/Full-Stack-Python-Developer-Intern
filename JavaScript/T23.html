@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .expense-tracker {
+            text-align: center;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #expenseList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #expenseList li {
+            margin-bottom: 5px;
+        }
+
+        #totalExpenses {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="expense-tracker">
+        <h1>Expense Tracker</h1>
+        <input type="text" id="expenseDescription" placeholder="Expense description">
+        <input type="number" id="expenseAmount" placeholder="Expense amount">
+        <button onclick="addExpense()">Add Expense</button>
+        <ul id="expenseList"></ul>
+        <div id="totalExpenses">Total: $0.00</div>
+    </div>
+
+    <script>
+        let totalExpenses = 0;
+        function addExpense() {
+            const description = document.getElementById('expenseDescription').value;
+            const amount = parseInt(document.getElementById('expenseAmount').value);
+            if (!description || isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid description and amount');
+                return;
+            }
+            const expenseList = document.getElementById('expenseList');
+            const newExpense = document.createElement('li');
+            newExpense.textContent = `${description}: $${amount.toFixed(2)}`;
+            expenseList.appendChild(newExpense);
+            totalExpenses += amount;
+            document.getElementById('totalExpenses').textContent = `Total: $${totalExpenses.toFixed(2)}`;
+            document.getElementById('expenseDescription').value = '';
+            document.getElementById('expenseAmount').value = '';
+        }
+    </script>
+</body>
+</html>
+

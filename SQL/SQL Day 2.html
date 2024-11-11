@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 2</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 2 of Internship</h1>
+
+    <!-- SQL Queries List -->
+    <div class="query-container">
+        <h2>1. Retrieve the Student CGPA, Company ID (CID), Job Role, and Package of all the Students.</h2>
+        <pre><code>SELECT CGPA,CID,Job_role,Package FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CGPA,CID,Job_role,Package FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. Retrieve the Lecturer ID (LID), Name, and Designation of all the Lecturers.</h2>
+        <pre><code>SELECT LID,First_name,Designation FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT LID,First_name,Designation FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. Retrieve the Company ID (CID), Company Name, and the Students Placed in all the Companies.</h2>
+        <pre><code>SELECT CID,Company_name,Students_placed FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CID,Company_name,Students_placed FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. Retrieve the Students Branch, College, Semester, and Section of all the Students.</h2>
+        <pre><code>SELECT Branch,College,Semester,Section FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch,College,Semester,Section FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. Retrieve the Test 3 Marks of all the Students.</h2>
+        <pre><code>SELECT Test3 FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Test3 FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. Retrieve the Subject Name and Semester of all the Subjects.</h2>
+        <pre><code>SELECT Subject_name,Semester FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name,Semester FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. Retrieve the List of all the Branch IDs (BID).</h2>
+        <pre><code>SELECT BID FROM Branches</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT BID FROM Branches', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. Retrieve the USN, Name, College, Section, and Branch of all the Students.</h2>
+        <pre><code>SELECT Usn,First_name,College,Section,Branch FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,College,Section,Branch FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. Retrieve the USN, Test1, Test2, and Test3 Marks of all the Students.</h2>
+        <pre><code>SELECT Usn,Test1,Test2,Test3 FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,Test1,Test2,Test3 FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. Retrieve the Designation of all the Lecturers.</h2>
+        <pre><code>SELECT Designation FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Designation FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. Retrieve the Name and Gender of all the Students.</h2>
+        <pre><code>SELECT First_name,Gender FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,Gender FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. Retrieve the Section of all the Students.</h2>
+        <pre><code>SELECT Section FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Section FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. Retrieve the Date of Joining (DOJ) of all the Students.</h2>
+        <pre><code>SELECT DOJ FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT DOJ FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. Retrieve the List of all the Subjects names.</h2>
+        <pre><code>SELECT Subject_name FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Subject_name FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. Retrieve the Lecturer Name, College, and Branch of all the Lecturers.</h2>
+        <pre><code>SELECT First_name,College,Branch FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name,College,Branch FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(query).then(function() {
+                // Change button style and text after copying
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                alert('Failed to copy text');
+            });
+        }
+    </script>
+
+</body>
+</html>
+

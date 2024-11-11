@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 10</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 10 of Internship</h1>
+
+    <!-- Query 1 -->
+    <div class="query-container">
+        <h2>1. The university registrar wants to review subjects that require more study hours than the average. Retrieve the subjects where the subject hours exceed the average hours of all subjects.</h2>
+        <pre><code>WITH AverageStudyHours AS (SELECT AVG(Hours) AS avg_hours FROM subjects) SELECT Subject_name FROM subjects, AverageStudyHours WHERE Hours > AverageStudyHours.avg_hours</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('WITH AverageStudyHours AS (SELECT AVG(Hours) AS avg_hours FROM subjects) SELECT Subject_name FROM subjects, AverageStudyHours WHERE Hours > AverageStudyHours.avg_hours', this)">Copy</button>
+    </div>
+
+    <!-- Query 2 -->
+    <div class="query-container">
+        <h2>2. The academic coordinator wants to identify subjects with the least number of teaching hours. Write a SQL query to find the SID and minimum number of hours as Min_Hours for each subject.</h2>
+        <pre><code>SELECT SID, MIN(Hours) AS Min_Hours FROM subjects GROUP BY SID;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT SID, MIN(Hours) AS Min_Hours FROM subjects GROUP BY SID;', this)">Copy</button>
+    </div>
+
+    <!-- Query 3 -->
+    <div class="query-container">
+        <h2>3. Students are curious about job opportunities with attractive packages. Display the job roles of students placed where Packages offered by the Companies are greater than 5 Lakh.</h2>
+        <pre><code>SELECT S.Job_role FROM Students S JOIN Companies C ON S.CID = C.CID WHERE S.Package > 500000;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT S.Job_role FROM Students S JOIN Companies C ON S.CID = C.CID WHERE S.Package > 500000;', this)">Copy</button>
+    </div>
+
+    <!-- Query 4 -->
+    <div class="query-container">
+        <h2>4. A university wants to reward lecturers who teach subjects either in the 5th semester or subjects with more than 45 hours. Identify the names of lecturers meeting these criteria.</h2>
+        <pre><code>SELECT L.First_name FROM Lecturers L JOIN Subjects S ON L.SID = S.SID WHERE (S.Semester = 5 OR S.Hours > 45);</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT L.First_name FROM Lecturers L JOIN Subjects S ON L.SID = S.SID WHERE (S.Semester = 5 OR S.Hours > 45);', this)">Copy</button>
+    </div>
+
+    <!-- Query 5 -->
+    <div class="query-container">
+        <h2>5. Curriculum planners want to calculate the average number of teaching hours per subject to optimize course schedules. Write a SQL query to select SID, and the average Hours as Avg_Hours grouped by SID.</h2>
+        <pre><code>SELECT SID, AVG(Hours) AS Avg_Hours FROM Subjects GROUP BY SID;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT SID, AVG(Hours) AS Avg_Hours FROM Subjects GROUP BY SID;', this)">Copy</button>
+    </div>
+
+    <!-- Query 6 -->
+    <div class="query-container">
+        <h2>6. The placement cell is analyzing the average package offered by each company. Write a SQL query to select CID and find the average package as Avg_Package for each company.</h2>
+        <pre><code>SELECT CID, AVG(package) AS Avg_Package FROM Students GROUP BY CID;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CID, AVG(package) AS Avg_Package FROM Students GROUP BY CID;', this)">Copy</button>
+    </div>
+
+    <!-- Query 7 -->
+    <div class="query-container">
+        <h2>7. The academic dean wants to identify the highest CGPA in each branch to reward top-performing students. Write a SQL query to select Branch ID (BID) and find the maximum CGPA as Max_CGPA for each branch ID.</h2>
+        <pre><code>SELECT Branch, MAX(CGPA) AS Max_CGPA FROM students GROUP BY Branch;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch, MAX(CGPA) AS Max_CGPA FROM students GROUP BY Branch;', this)">Copy</button>
+    </div>
+
+    <!-- Query 8 -->
+    <div class="query-container">
+        <h2>8. The placement cell wants to identify the highest package offered to students grouped by college and branch for a success report. Write a SQL query to select College, Branch, and the maximum package as Max_Package grouped by college and branch.</h2>
+        <pre><code>SELECT College, Branch, MAX(package) AS Max_Package FROM Students GROUP BY College, Branch;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, Branch, MAX(package) AS Max_Package FROM Students GROUP BY College, Branch;', this)">Copy</button>
+    </div>
+
+    <!-- Query 9 -->
+    <div class="query-container">
+        <h2>9. Academic administrators need to know the total number of students in each combination of college, branch, and semester for enrollment planning. Write a SQL query to select College, Branch, Semester, and total student as Total_Students grouped by these columns.</h2>
+        <pre><code>SELECT College, Branch, Semester, COUNT(*) AS Total_Students FROM Students GROUP BY College, Branch, Semester;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT College, Branch, Semester, COUNT(*) AS Total_Students FROM Students GROUP BY College, Branch, Semester;', this)">Copy</button>
+    </div>
+
+    <!-- Query 10 -->
+    <div class="query-container">
+        <h2>10. A recruitment firm is interested in companies offering above-average packages to students. So could you help in listing the names of companies that provide packages higher than the average package offered by all companies.</h2>
+        <pre><code>SELECT Company_name FROM Companies WHERE package > (SELECT AVG(package) FROM Companies);</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies WHERE package > (SELECT AVG(package) FROM Companies);', this)">Copy</button>
+    </div>
+
+    <!-- Query 11 -->
+    <div class="query-container">
+        <h2>11. The researcher wants to know about subjects taught by assistant professors or subjects where the semester is less than 5. Retrieve the subject names based on these conditions.</h2>
+        <pre><code>SELECT s.Subject_name FROM Subjects s JOIN Lecturers l ON s.SID = l.SID WHERE (l.Designation = 'Assistant professor' OR s.Semester < 5) ORDER BY s.Subject_name;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT s.Subject_name FROM Subjects s JOIN Lecturers l ON s.SID = l.SID WHERE (l.Designation = \'Assistant professor\' OR s.Semester < 5) ORDER BY s.Subject_name;', this)">Copy</button>
+    </div>
+
+    <!-- Query 12 -->
+    <div class="query-container">
+        <h2>12. The college administration wants to understand the student distribution across various branches to allocate resources effectively. Write a SQL query to display branch name and find the count of students as Total_Students in each branch.</h2>
+        <pre><code>SELECT b.Branch_name, COUNT(s.Usn) AS Total_Students FROM branches b JOIN students s ON b.BID = s.Branch GROUP BY b.Branch_name;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT b.Branch_name, COUNT(s.Usn) AS Total_Students FROM branches b JOIN students s ON b.BID = s.Branch GROUP BY b.Branch_name;', this)">Copy</button>
+    </div>
+
+    <!-- Query 13 -->
+    <div class="query-container">
+        <h2>13. The exam committee is recognizing outstanding performance in each subject. Write a SQL query to display the subject name and find the maximum Test1 score as Max_Test1_Score for each subject.</h2>
+        <pre><code>SELECT s.Subject_name,MAX(m.Test1) AS Max_Test1_Score FROM Marks m JOIN Subjects s ON m.SID = s.SID GROUP BY s.Subject_name ORDER BY s.Subject_name;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT s.Subject_name,MAX(m.Test1) AS Max_Test1_Score FROM Marks m JOIN Subjects s ON m.SID = s.SID GROUP BY s.Subject_name ORDER BY s.Subject_name;', this)">Copy</button>
+    </div>
+
+    <!-- Query 14 -->
+    <div class="query-container">
+        <h2>14. The exam committee is evaluating the average performance in Test1 for each subject. Write a SQL query to select SID and find the average Test1 score as Avg_Test1_Score for each subject.</h2>
+        <pre><code>SELECT m.SID, AVG(m.Test1) AS Avg_Test1_Score FROM Marks m GROUP BY m.SID ORDER BY m.SID;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT m.SID, AVG(m.Test1) AS Avg_Test1_Score FROM Marks m GROUP BY m.SID ORDER BY m.SID;', this)">Copy</button>
+    </div>
+
+    <script>
+        // Function to copy SQL query to clipboard
+        function copyToClipboard(query, button) {
+            // Create a temporary textarea element to hold the SQL code
+            const textArea = document.createElement('textarea');
+            textArea.value = query;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            // Update the button to show "Copied"
+            button.classList.add('copied');
+            button.textContent = 'Copied!';
+
+            // Reset button text after 2 seconds
+            setTimeout(function() {
+                button.classList.remove('copied');
+                button.textContent = 'Copy';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+

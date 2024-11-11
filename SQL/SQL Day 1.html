@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 1</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 1 of Internship</h1>
+
+    <!-- SQL Queries List -->
+    <div class="query-container">
+        <h2>1. Retrieve the List of all Marks</h2>
+        <pre><code>SELECT * FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. Retrieve the List of all the Branch Names</h2>
+        <pre><code>SELECT Branch_name FROM Branches</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Branch_name FROM Branches', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. Retrieve the USN of all the Students</h2>
+        <pre><code>SELECT Usn FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. Retrieve the List of all Lecturers</h2>
+        <pre><code>SELECT * FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. Retrieve the List of all Companies</h2>
+        <pre><code>SELECT * FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. Retrieve the List of all Branches</h2>
+        <pre><code>SELECT * FROM Branches</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Branches', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. List of Lecturers with 'Professor' in their Designation</h2>
+        <pre><code>SELECT First_name, Designation FROM Lecturers WHERE Designation LIKE '%Professor%'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name, Designation FROM Lecturers WHERE Designation LIKE \'%Professor%\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. Retrieve the List of all Students</h2>
+        <pre><code>SELECT * FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. Retrieve the First Name of all Lecturers</h2>
+        <pre><code>SELECT First_name FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT First_name FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. Find Students in Branches Starting with 'CSE'</h2>
+        <pre><code>SELECT Usn, Branch FROM Students WHERE Branch LIKE 'CSE%'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, Branch FROM Students WHERE Branch LIKE \'CSE%\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. Retrieve Subjects Related to 'Data'</h2>
+        <pre><code>SELECT Sid, Subject_name FROM Subjects WHERE Subject_name LIKE '%Data%'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Sid, Subject_name FROM Subjects WHERE Subject_name LIKE \'%Data%\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. Retrieve the List of all Subjects</h2>
+        <pre><code>SELECT * FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. Find Students Whose First Names Start with 'S'</h2>
+        <pre><code>SELECT Usn, First_name FROM Students WHERE First_name LIKE 'S%'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn, First_name FROM Students WHERE First_name LIKE \'S%\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. Retrieve the List of all Company Names</h2>
+        <pre><code>SELECT Company_name FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. List Companies Located in Bengaluru</h2>
+        <pre><code>SELECT Company_name FROM Companies WHERE Company_name LIKE '%Bengaluru%'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies WHERE Company_name LIKE \'%Bengaluru%\'', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(query).then(function() {
+                // Change button style and text after copying
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                alert('Failed to copy text');
+            });
+        }
+    </script>
+
+</body>
+</html>
+

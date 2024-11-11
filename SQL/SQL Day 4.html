@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 1</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 1 of Internship</h1>
+
+    <!-- SQL Queries List -->
+
+    <div class="query-container">
+        <h2>1. Retrieve Branch ID (BID) of the Branch with name ‘Computer Science and Engineering’.</h2>
+        <pre><code>SELECT BID FROM Branches WHERE Branch_name = 'Computer Science and Engineering'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT BID FROM Branches WHERE Branch_name = \'Computer Science and Engineering\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. Retrieve Lecturers ID (LID), and Name in Descending Order of their ID.</h2>
+        <pre><code>SELECT LID,First_name FROM Lecturers ORDER BY LID DESC</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT LID,First_name FROM Lecturers ORDER BY LID DESC', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. Retrieve Lecturers ID (LID), Name, and Designation of Lecturers who belong to College ‘KSIT10’ in Descending order of their Names.</h2>
+        <pre><code>SELECT LID,First_name,Designation FROM Lecturers WHERE College = 'KSIT10' ORDER BY First_name DESC</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT LID,First_name,Designation FROM Lecturers WHERE College = \'KSIT10\' ORDER BY First_name DESC', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. Retrieve Usn, Subject ID (SID), and Subject CGPA of all the Students who have scored Greater than or equal to 9 CGPA.</h2>
+        <pre><code>SELECT Usn,SID,Subject_CGPA FROM Marks WHERE Subject_CGPA >= 9</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,SID,Subject_CGPA FROM Marks WHERE Subject_CGPA >= 9', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. Retrieve all information about Lecturers in Ascending Order of their Designation.</h2>
+        <pre><code>SELECT * FROM Lecturers ORDER BY Designation ASC</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Lecturers ORDER BY Designation ASC', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. Retrieve all information about Lecturers in Ascending Order of their Names.</h2>
+        <pre><code>SELECT * FROM Lecturers ORDER BY First_name ASC</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Lecturers ORDER BY First_name ASC', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. Retrieve Lecturer ID, name, and Designation details of the lecturer who is affiliated with the college 'SIT10'.</h2>
+        <pre><code>SELECT LID,First_name,Designation FROM Lecturers WHERE College = 'SIT10'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT LID,First_name,Designation FROM Lecturers WHERE College = \'SIT10\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. Retrieve Company ID CID, Name, and Package of all the Companies first in Descending Order of their Package and then in Ascending Order of their Names.</h2>
+        <pre><code>SELECT CID,Company_name,Package FROM Companies ORDER BY Package DESC,Company_name ASC;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT CID,Company_name,Package FROM Companies ORDER BY Package DESC,Company_name ASC;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. Retrieve all information of Students Marks of Subject ID (SID) ‘24SQL’ in Descending Order of their Subject CGPA.</h2>
+        <pre><code>SELECT * FROM Marks WHERE SID = '24SQL' ORDER BY Subject_CGPA DESC;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks WHERE SID = \'24SQL\' ORDER BY Subject_CGPA DESC;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. Retrieve all information about the Students whose job role is ‘Python Developer’ in Descending order of their Package.</h2>
+        <pre><code>SELECT * FROM Students WHERE Job_role = 'Python Developer' ORDER BY Package DESC;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Students WHERE Job_role = \'Python Developer\' ORDER BY Package DESC;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. Retrieve Usn, Name, and CGPA of students who have a CGPA Greater Than 8.</h2>
+        <pre><code>SELECT Usn,First_name,CGPA FROM Students WHERE CGPA > 8;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,CGPA FROM Students WHERE CGPA > 8;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. Retrieve the Company Names that have packages Greater than 3 Lakh.</h2>
+        <pre><code>SELECT Company_name FROM Companies WHERE Package > 300000;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Company_name FROM Companies WHERE Package > 300000;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. Retrieve Usn, Name, CGPA, Date of Joining, and Date of Graduation of students who have been placed as Data Analysts.</h2>
+        <pre><code>SELECT Usn,First_name,CGPA,DOJ,DOG FROM Students WHERE Job_role = 'Data Analyst'</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,CGPA,DOJ,DOG FROM Students WHERE Job_role = \'Data Analyst\'', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. Retrieve all information about Marks of Students ordered first by Subject CGPA in descending order and then by Test 3 scores in descending order.</h2>
+        <pre><code>SELECT * FROM Marks ORDER BY Subject_CGPA DESC,Test3 DESC;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT * FROM Marks ORDER BY Subject_CGPA DESC,Test3 DESC;', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. Retrieve Usn, Name, Branch, CGPA, and Package of Students ordered first in Ascending order of Name, then in Descending Order of CGPA, and then in Descending order of their Package.</h2>
+        <pre><code>SELECT Usn,First_name,Branch,CGPA,Package FROM Students ORDER BY First_name ASC,CGPA DESC,Package DESC;</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT Usn,First_name,Branch,CGPA,Package FROM Students ORDER BY First_name ASC,CGPA DESC,Package DESC;', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(query).then(function() {
+                // Change button style and text after copying
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                alert('Failed to copy text');
+            });
+        }
+    </script>
+
+</body>
+</html>
+

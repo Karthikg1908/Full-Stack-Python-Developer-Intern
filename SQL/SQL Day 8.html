@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Day 8</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #34495E;
+            border-bottom: 2px solid #B0BEC5;
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2D3436;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.15rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        pre:hover {
+            background-color: #34495E;
+        }
+
+        .copy-button {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .copy-button:hover {
+            background-color: #2980B9;
+        }
+
+        .copy-button.copied {
+            background-color: #27AE60;
+            pointer-events: none;
+        }
+
+        .query-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .query-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-container h2 {
+            font-size: 1.4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .query-container {
+                margin-bottom: 25px;
+            }
+
+            pre {
+                font-size: 1rem;
+            }
+
+            .copy-button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .query-container h2 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Tasks for Day 8 of Internship</h1>
+
+    <div class="query-container">
+        <h2>1. To celebrate academic achievements, the examination board wants to identify the highest score in Test3 across all students and subjects. Write a SQL query to find the highest Test3 score as Highest_Test3_Score.</h2>
+        <pre><code>SELECT MAX(Test3) AS Highest_Test3_Score FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MAX(Test3) AS Highest_Test3_Score FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>2. The career services office wants to review and negotiate better packages by identifying the lowest salary package offered to placed students. Write a SQL query to find the lowest salary package as Lowest_Salary_Package.</h2>
+        <pre><code>SELECT MIN(Package) AS Lowest_Salary_Package FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MIN(Package) AS Lowest_Salary_Package FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>3. The placement cell is analyzing company performance and wants to know the average number of students placed by all companies. Write a query to retrieve the average number of students placed as 'Average_Students_Placed'.</h2>
+        <pre><code>SELECT AVG(Students_placed) AS Average_Students_Placed FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT AVG(Students_placed) AS Average_Students_Placed FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>4. The dean's office is considering adding new branches of study and needs to know the current number of academic branches available. Write a SQL query to select the total number of branches as Total_Branches.</h2>
+        <pre><code>SELECT COUNT(Branch_name) AS Total_Branches FROM Branches</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(Branch_name) AS Total_Branches FROM Branches', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>5. The placement cell is recognizing company performance and wants to know which company placed the most students. Write a Query to find the highest number of students placed as 'Most_Students_Placed'.</h2>
+        <pre><code>SELECT MAX(Students_placed) AS Most_Students_Placed FROM Companies</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MAX(Students_placed) AS Most_Students_Placed FROM Companies', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>6. The HR department needs to know the number of unique designations among lecturers to plan for diverse training programs. Write a SQL query to select the count of unique designations as Unique_Designations.</h2>
+        <pre><code>SELECT COUNT(DISTINCT Designation) AS Unique_Designations FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(DISTINCT Designation) AS Unique_Designations FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>7. The career services office wants to determine how many unique companies have recruited students for campus placements. Write a SQL query to display the count of Unique Company ID as Unique_Recruiting_Companies</h2>
+        <pre><code>SELECT COUNT(DISTINCT CID) AS Unique_Recruiting_Companies FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(DISTINCT CID) AS Unique_Recruiting_Companies FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>8. The university administration is in the process of allocating a budget for faculty development programs. Write an SQL query to find the total count of lecturers and display the result as 'Total_Lecturers'.</h2>
+        <pre><code>SELECT COUNT(*) AS Total_Lecturers FROM Lecturers</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(*) AS Total_Lecturers FROM Lecturers', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>9. The registrar's office needs to find out the latest graduation date among students for alumni outreach programs. Write an SQL query to find the latest graduation date as Latest_Graduation_Date.</h2>
+        <pre><code>SELECT MAX(DOG) AS Latest_Graduation_Date FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MAX(DOG) AS Latest_Graduation_Date FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>10. The examination department needs to identify the lowest score in Test1 across all subjects to address potential issues in student comprehension or exam difficulty. Write a SQL query to find the lowest Test1 score as Lowest_Test1_Score.</h2>
+        <pre><code>SELECT MIN(Test1) AS Lowest_Test1_Score FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MIN(Test1) AS Lowest_Test1_Score FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>11. The university administration is planning to add new subjects to all semesters and needs to know the current total number of existing subjects. Write a SQL query to calculate the total number of subjects and display the result as 'Total_Subjects'.</h2>
+        <pre><code>SELECT COUNT(*) AS Total_Subjects FROM Subjects</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(*) AS Total_Subjects FROM Subjects', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>12. The career services office wants to determine the average salary package offered to placed students to analyze the effectiveness of their placement program. Write a SQL query to determine the average salary package as Average_Salary_Package.</h2>
+        <pre><code>SELECT AVG(Package) AS Average_Salary_Package FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT AVG(Package) AS Average_Salary_Package FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>13. The career services office needs to know the number of distinct job roles students have been placed in to tailor career counseling services. Write a SQL query to select the count of unique job roles as Unique_Job_Roles.</h2>
+        <pre><code>SELECT COUNT(DISTINCT Job_role) AS Unique_Job_Roles FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT COUNT(DISTINCT Job_role) AS Unique_Job_Roles FROM Students', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>14. To assess student performance in the third test across all subjects, the examination board wants to find the average Test3 score. Write a SQL query to calculate the average Test3 score as Average_Test3_Score.</h2>
+        <pre><code>SELECT AVG(Test3) AS Average_Test3_Score FROM Marks</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT AVG(Test3) AS Average_Test3_Score FROM Marks', this)">Copy</button>
+    </div>
+
+    <div class="query-container">
+        <h2>15. The HR department is analyzing employee tenure and wants to find the earliest date any student joined a company post-graduation. Write a SQL query to find the earliest joining date as Earliest_Joining_Date.</h2>
+        <pre><code>SELECT MIN(DOJ) AS Earliest_Joining_Date FROM Students</code></pre>
+        <button class="copy-button" onclick="copyToClipboard('SELECT MIN(DOJ) AS Earliest_Joining_Date FROM Students', this)">Copy</button>
+    </div>
+
+    <script>
+        function copyToClipboard(query, button) {
+            var textarea = document.createElement("textarea");
+            textarea.value = query;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            button.classList.add("copied");
+            button.innerText = "Copied!";
+            
+            setTimeout(function() {
+                button.classList.remove("copied");
+                button.innerText = "Copy";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+

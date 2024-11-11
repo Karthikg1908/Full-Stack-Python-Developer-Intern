@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Gallery</title>
+    <style>
+    /* Global Styles */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #9b59b6, #6a89cc);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Header Styles */
+    header {
+        width: 100%;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        padding: 5px 0;
+        color: white;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: #f8f9fa;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 1.4em;
+        font-weight: 500;
+        padding: 8px 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        transition: all 0.4s ease;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #ffd700;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+    }
+
+    nav a.active {
+        color: #ffdd57;
+        font-weight: 700;
+    }
+
+    /* Container Styles */
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        margin-bottom: 40px;
+    }
+
+    /* Common Styles */
+    h1, h3 {
+        text-align: center;
+        color: #2c3e50;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    /* Task List Styles */
+    .task-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    /* Individual Task Styles */
+    .task-list li {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        cursor: pointer;
+        border: 10px solid #ddd;
+    }
+
+    .task-list li:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        background-color: #e0f7fa;
+    }
+
+    /* Link Styles */
+    .task-list a {
+        text-decoration: none;
+        color: #3498db;
+        font-size: 1.3em;
+        font-weight: 600;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .task-list a:hover {
+        color: #2980b9;
+        transform: scale(1.05);
+    }
+
+    /* Specific Task Background Colors */
+    .task-list li:nth-child(odd) {
+        background-color: #fce4ec;
+    }
+
+    .task-list li:nth-child(even) {
+        background-color: #e1f5fe;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .task-list {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Individual Task Styles */
+    .task-list li {
+        padding: 18px;
+        border-radius: 30px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        width: 280px; 
+        text-align: center; 
+        font-size: 1.1em; 
+    }
+
+	.task-list li:nth-child(1) {
+		background-color: #fce4ec;
+		border: 2px solid #f48fb1;
+	}
+	.task-list li:nth-child(2) {
+		background-color: #e1f5fe;
+		border: 2px solid #81d4fa;
+	}
+	.task-list li:nth-child(3) {
+		background-color: #fffde7;
+		border: 2px solid #ffe57f;
+	}
+	.task-list li:nth-child(4) {
+		background-color: #e8f5e9;
+		border: 2px solid #a5d6a7;
+	}
+	.task-list li:nth-child(5) {
+		background-color: #f3e5f5;
+		border: 2px solid #ce93d8;
+	}
+	.task-list li:nth-child(6) {
+		background-color: #f0f4c3;
+		border: 2px solid #dce775;
+	}
+	.task-list li:nth-child(7) {
+		background-color: #ffe0b2;
+		border: 2px solid #ffb74d;
+	}
+	.task-list li:nth-child(8) {
+		background-color: #e0f7fa;
+		border: 2px solid #80deea;
+	}
+	.task-list li:nth-child(9) {
+		background-color: #f1f8e9;
+		border: 2px solid #c5e1a5;
+	}
+	.task-list li:nth-child(10) {
+		background-color: #fce4ec;
+		border: 2px solid #f48fb1;
+	}
+	.task-list li:nth-child(11) {
+		background-color: #e8eaf6;
+		border: 2px solid #9fa8da;
+	}
+	.task-list li:nth-child(12) {
+		background-color: #f3e5f5;
+		border: 2px solid #ce93d8;
+	}
+	.task-list li:nth-child(13) {
+		background-color: #e1f5fe;
+		border: 2px solid #81d4fa;
+	}
+	.task-list li:nth-child(14) {
+		background-color: #fff3e0;
+		border: 2px solid #ffcc80;
+	}
+	.task-list li:nth-child(15) {
+		background-color: #e0f2f1;
+		border: 2px solid #80cbc4;
+	}
+	.task-list li:nth-child(16) {
+		background-color: #f9fbe7;
+		border: 2px solid #c6ff00;
+	}
+	.task-list li:nth-child(17) {
+		background-color: #ffe0b2;
+		border: 2px solid #ffb74d;
+	}
+	.task-list li:nth-child(18) {
+		background-color: #e0f7fa;
+		border: 2px solid #80deea;
+	}
+	.task-list li:nth-child(19) {
+		background-color: #f1f8e9;
+		border: 2px solid #c5e1a5;
+	}
+	.task-list li:nth-child(20) {
+		background-color: #e3f2fd;
+		border: 2px solid #90caf9;
+	}
+	.task-list li:nth-child(21) {
+		background-color: #f0f4c3;
+		border: 2px solid #dce775;
+	}
+	.task-list li:nth-child(22) {
+		background-color: #ffe0b2;
+		border: 2px solid #ffb74d;
+	}
+	.task-list li:nth-child(23) {
+		background-color: #e0f7fa;
+		border: 2px solid #80deea;
+	}
+	.task-list li:nth-child(24) {
+		background-color: #f3e5f5;
+		border: 2px solid #ce93d8;
+	}
+	.task-list li:nth-child(25) {
+		background-color: #e1f5fe;
+		border: 2px solid #81d4fa;
+	}
+	.task-list li:nth-child(26) {
+		background-color: #fffde7;
+		border: 2px solid #ffe57f;
+	}
+	.task-list li:nth-child(27) {
+		background-color: #e8f5e9;
+		border: 2px solid #a5d6a7;
+	}
+	.task-list li:nth-child(28) {
+		background-color: #fce4ec;
+		border: 2px solid #f48fb1;
+	}
+	.task-list li:nth-child(29) {
+		background-color: #f9fbe7;
+		border: 2px solid #c6ff00;
+	}
+	.task-list li:nth-child(30) {
+		background-color: #e0e0e0;
+		border: 2px solid #bdbdbd;
+	}
+
+	.task-list li:hover {
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+	}
+
+	.task-list li:hover:nth-child(1) {
+		background-color: #f8bbd0;
+	}
+	.task-list li:hover:nth-child(2) {
+		background-color: #b3e5fc;
+	}
+	.task-list li:hover:nth-child(3) {
+		background-color: #fff9c4;
+	}
+	.task-list li:hover:nth-child(4) {
+		background-color: #c8e6c9;
+	}
+	.task-list li:hover:nth-child(5) {
+		background-color: #e1bee7;
+	}
+	.task-list li:hover:nth-child(6) {
+		background-color: #e6ee9c;
+	}
+	.task-list li:hover:nth-child(7) {
+		background-color: #ffcc80;
+	}
+	.task-list li:hover:nth-child(8) {
+		background-color: #80deea;
+	}
+	.task-list li:hover:nth-child(9) {
+		background-color: #c5e1a5;
+	}
+	.task-list li:hover:nth-child(10) {
+		background-color: #f8bbd0;
+	}
+	.task-list li:hover:nth-child(11) {
+		background-color: #9fa8da;
+	}
+	.task-list li:hover:nth-child(12) {
+		background-color: #e1bee7;
+	}
+	.task-list li:hover:nth-child(13) {
+		background-color: #81d4fa;
+	}
+	.task-list li:hover:nth-child(14) {
+		background-color: #ffcc80;
+	}
+	.task-list li:hover:nth-child(15) {
+		background-color: #80cbc4;
+	}
+	.task-list li:hover:nth-child(16) {
+		background-color: #c6ff00;
+	}
+	.task-list li:hover:nth-child(17) {
+		background-color: #ffb74d;
+	}
+	.task-list li:hover:nth-child(18) {
+		background-color: #80deea;
+	}
+	.task-list li:hover:nth-child(19) {
+		background-color: #c5e1a5;
+	}
+	.task-list li:hover:nth-child(20) {
+		background-color: #90caf9;
+	}
+	.task-list li:hover:nth-child(21) {
+		background-color: #dce775;
+	}
+	.task-list li:hover:nth-child(22) {
+		background-color: #ffb74d;
+	}
+	.task-list li:hover:nth-child(23) {
+		background-color: #80deea;
+	}
+	.task-list li:hover:nth-child(24) {
+		background-color: #ce93d8;
+	}
+	.task-list li:hover:nth-child(25) {
+		background-color: #81d4fa;
+	}
+	.task-list li:hover:nth-child(26) {
+		background-color: #ffe57f;
+	}
+	.task-list li:hover:nth-child(27) {
+		background-color: #a5d6a7;
+	}
+	.task-list li:hover:nth-child(28) {
+		background-color: #f8bbd0;
+	}
+	.task-list li:hover:nth-child(29) {
+		background-color: #c6ff00;
+	}
+	.task-list li:hover:nth-child(30) {
+		background-color: #bdbdbd;
+	}
+    </style>
+</head>
+<body>
+<header>
+        <h1 style="font-family: 'Times New Roman', Times, serif; color: red; text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;">Internship Diary</h1>
+		<nav style="font-family: 'Times New Roman', Times, serif;">
+			<a href="#html-css">HTML & CSS Tasks</a>
+			<a href="#javascript">JavaScript Tasks</a>
+			<a href="#sql">SQL Tasks</a>
+		</nav>
+
+    </header>
+    <div class="container">
+        <div class="left-column">
+		<div id="html-css">
+
+            <h1>HTML & CSS Tasks</h1>
+            <h3>These are the tasks that I performed during my HTML & CSS internship phase.</h3>
+            <ul class="task-list">
+                <li><a href="HTML & CSS/Task 1.html" target="_blank" aria-label="Task 1: Coming Soon Button">TASK 1: COMING SOON BUTTON</a></li>
+				<li><a href="HTML & CSS/Task 2.html" target="_blank" aria-label="Task 2: Speech Bubble">TASK 2: SPEECH BUBBLE</a></li>
+				<li><a href="HTML & CSS/Task 3.html" target="_blank" aria-label="Task 3: Cookie Consent Pop-Up">TASK 3: COOKIE CONSENT POP-UP</a></li>
+				<li><a href="HTML & CSS/Task 4.html" target="_blank" aria-label="Task 4: Over-Lap Block Layout">TASK 4: OVER-LAP BLOCK LAYOUT</a></li>
+				<li><a href="HTML & CSS/Task 5.html" target="_blank" aria-label="Task 5: Drag and Drop Files">TASK 5: DRAG AND DROP FILES</a></li>
+				<li><a href="HTML & CSS/Task 6.html" target="_blank" aria-label="Task 6: Embed the YouTube Video">TASK 6: EMBED THE YOUTUBE VIDEO</a></li>
+				<li><a href="HTML & CSS/Task 7.html" target="_blank" aria-label="Task 7: Book Review">TASK 7: BOOK REVIEW</a></li>
+				<li><a href="HTML & CSS/Task 8.html" target="_blank" aria-label="Task 8: CSS Grid Layout">TASK 8: CSS GRID LAYOUT</a></li>
+				<li><a href="HTML & CSS/Task 9.html" target="_blank" aria-label="Task 9: Newsletter Subscription">TASK 9: NEWSLETTER SUBSCRIPTION</a></li>
+				<li><a href="HTML & CSS/Task 10.html" target="_blank" aria-label="Task 10: Glowing Text">TASK 10: GLOWING TEXT</a></li>
+				<li><a href="HTML & CSS/Task 11.html" target="_blank" aria-label="Task 11: Top Navigation Bar">TASK 11: TOP NAVIGATION BAR</a></li>
+				<li><a href="HTML & CSS/Task 12.html" target="_blank" aria-label="Task 12: Error-404">TASK 12: ERROR-404</a></li>
+				<li><a href="HTML & CSS/Task 13.html" target="_blank" aria-label="Task 13: Responsive Grid">TASK 13: RESPONSIVE GRID</a></li>
+				<li><a href="HTML & CSS/Task 14.html" target="_blank" aria-label="Task 14: Profile Card">TASK 14: PROFILE CARD</a></li>
+				<li><a href="HTML & CSS/Task 15.html" target="_blank" aria-label="Task 15: Collapsible Panel">TASK 15: COLLAPSIBLE PANEL</a></li>
+				<li><a href="HTML & CSS/Task 16.html" target="_blank" aria-label="Task 16: Project Timeline">TASK 16: PROJECT TIMELINE</a></li>
+				<li><a href="HTML & CSS/Task 17.html" target="_blank" aria-label="Task 17: Service Page">TASK 17: SERVICE PAGE</a></li>
+				<li><a href="HTML & CSS/Task 18.html" target="_blank" aria-label="Task 18: Contact Us">TASK 18: CONTACT US</a></li>
+				<li><a href="HTML & CSS/Task 19.html" target="_blank" aria-label="Task 19: Testimonials">TASK 19: TESTIMONIALS</a></li>
+				<li><a href="HTML & CSS/Task 20.html" target="_blank" aria-label="Task 20: Pricing Table">TASK 20: PRICING TABLE</a></li>
+				<li><a href="HTML & CSS/Task 21.html" target="_blank" aria-label="Task 21: Feedback Form">TASK 21: FEEDBACK FORM</a></li>
+				<li><a href="HTML & CSS/Task 22.html" target="_blank" aria-label="Task 22: Responsive Grid Layout">TASK 22: RESPONSIVE GRID LAYOUT</a></li>
+				<li><a href="HTML & CSS/Task 23.html" target="_blank" aria-label="Task 23: Skewed Sections">TASK 23: SKEWED SECTIONS</a></li>
+				<li><a href="HTML & CSS/Task 24.html" target="_blank" aria-label="Task 24: Expanding Menu">TASK 24: EXPANDING MENU</a></li>
+				<li><a href="HTML & CSS/Task 25.html" target="_blank" aria-label="Task 25: Job Listing">TASK 25: JOB LISTING</a></li>
+				<li><a href="HTML & CSS/Task 26.html" target="_blank" aria-label="Task 26: Dashboard Cards">TASK 26: DASHBOARD CARDS</a></li>
+				<li><a href="HTML & CSS/Task 27.html" target="_blank" aria-label="Task 27: Vertical Tabs">TASK 27: VERTICAL TABS</a></li>
+				<li><a href="HTML & CSS/Task 28.html" target="_blank" aria-label="Task 28: Event Invitation">TASK 28: EVENT INVITATION</a></li>
+				<li><a href="HTML & CSS/Task 29.html" target="_blank" aria-label="Task 29: Fitness Tracker">TASK 29: FITNESS TRACKER</a></li>
+				<li><a href="HTML & CSS/Task 30.html" target="_blank" aria-label="Task 30: Personal Portfolio">TASK 30: PERSONAL PORTFOLIO</a></li>
+            </ul>
+        </div>
+		<div id="javascript">
+        <div class="right-column">
+            <h1>JavaScript Tasks</h1>
+            <h3>These are the JavaScript tasks I worked on.</h3>
+			<ul class="task-list">
+				<li><a href="JavaScript/T1.html" target="_blank" aria-label="Task 1: Background Color Picker">TASK 1: BACKGROUND COLOR PICKER</a></li>
+				<li><a href="JavaScript/T2.html" target="_blank" aria-label="Task 2: Newsletter Subscription">TASK 2: NEWSLETTER SUBSCRIPTION</a></li>
+				<li><a href="JavaScript/T3.html" target="_blank" aria-label="Task 3: Countdown to Event">TASK 3: COUNTDOWN TO EVENT</a></li>
+				<li><a href="JavaScript/T4.html" target="_blank" aria-label="Task 4: Name Formatter">TASK 4: NAME FORMATTER</a></li>
+				<li><a href="JavaScript/T5.html" target="_blank" aria-label="Task 5: User Authentication">TASK 5: USER AUTHENTICATION</a></li>
+				<li><a href="JavaScript/T6.html" target="_blank" aria-label="Task 6: Pattern Generator">TASK 6: PATTERN GENERATOR</a></li>
+				<li><a href="JavaScript/T7.html" target="_blank" aria-label="Task 7: Weather App (Mock)">TASK 7: WEATHER APP (MOCK)</a></li>
+				<li><a href="JavaScript/T8.html" target="_blank" aria-label="Task 8: Interactive Greeting Page">TASK 8: INTERACTIVE GREETING PAGE</a></li>
+				<li><a href="JavaScript/T9.html" target="_blank" aria-label="Task 9: Personal Diary">TASK 9: PERSONAL DIARY</a></li>
+				<li><a href="JavaScript/T10.html" target="_blank" aria-label="Task 10: Simple To-Do List">TASK 10: SIMPLE TO-DO LIST</a></li>
+				<li><a href="JavaScript/T11.html" target="_blank" aria-label="Task 11: Name Reverser">TASK 11: NAME REVERSER</a></li>
+				<li><a href="JavaScript/T12.html" target="_blank" aria-label="Task 12: Music Playlist">TASK 12: MUSIC PLAYLIST</a></li>
+				<li><a href="JavaScript/T13.html" target="_blank" aria-label="Task 13: Simple Calculator">TASK 13: SIMPLE CALCULATOR</a></li>
+				<li><a href="JavaScript/T14.html" target="_blank" aria-label="Task 14: Random Joke Generator">TASK 14: RANDOM JOKE GENERATOR</a></li>
+				<li><a href="JavaScript/T15.html" target="_blank" aria-label="Task 15: Mad Libs Game">TASK 15: MAD LIBS GAME</a></li>
+				<li><a href="JavaScript/T16.html" target="_blank" aria-label="Task 16: Word Counter">TASK 16: WORD COUNTER</a></li>
+				<li><a href="JavaScript/T17.html" target="_blank" aria-label="Task 17: Age Calculator">TASK 17: AGE CALCULATOR</a></li>
+				<li><a href="JavaScript/T18.html" target="_blank" aria-label="Task 18: Pomodoro Timer">TASK 18: POMODORO TIMER</a></li>
+				<li><a href="JavaScript/T19.html" target="_blank" aria-label="Task 19: Temperature Converter">TASK 19: TEMPERATURE CONVERTER</a></li>
+				<li><a href="JavaScript/T20.html" target="_blank" aria-label="Task 20: Notes App">TASK 20: NOTES APP</a></li>
+				<li><a href="JavaScript/T21.html" target="_blank" aria-label="Task 21: Rock Paper Scissors Game">TASK 21: ROCK PAPER SCISSORS GAME</a></li>
+				<li><a href="JavaScript/T22.html" target="_blank" aria-label="Task 22: Shopping List">TASK 22: SHOPPING LIST</a></li>
+				<li><a href="JavaScript/T23.html" target="_blank" aria-label="Task 23: Expense Tracker">TASK 23: EXPENSE TRACKER</a></li>
+				<li><a href="JavaScript/T24.html" target="_blank" aria-label="Task 24: BMI Calculator">TASK 24: BMI CALCULATOR</a></li>
+				<li><a href="JavaScript/T25.html" target="_blank" aria-label="Task 25: Countdown Timer">TASK 25: COUNTDOWN TIMER</a></li>
+				<li><a href="JavaScript/T26.html" target="_blank" aria-label="Task 26: Flashcards">TASK 26: FLASHCARDS</a></li>
+				<li><a href="JavaScript/T27.html" target="_blank" aria-label="Task 27: Number Guessing Game">TASK 27: NUMBER GUESSING GAME</a></li>
+				<li><a href="JavaScript/T28.html" target="_blank" aria-label="Task 28: Loan Calculator">TASK 28: LOAN CALCULATOR</a></li>
+				<li><a href="JavaScript/T29.html" target="_blank" aria-label="Task 29: Simple Form Validation">TASK 29: SIMPLE FORM VALIDATION</a></li>
+				<li><a href="JavaScript/T30.html" target="_blank" aria-label="Task 30: Stopwatch">TASK 30: STOPWATCH</a></li>
+			</ul>
+        </div>
+    </div>
+    <div id="sql">
+    <h1>SQL Tasks</h1>
+    <h3>These are the SQL tasks I worked on.</h3>
+    <ul class="task-list">
+        <li><a href="SQL/SQL Day 1.html" target="_blank" aria-label="SQL Day 1">SQL DAY 1</a></li>
+        <li><a href="SQL/SQL Day 2.html" target="_blank" aria-label="SQL Day 2">SQL DAY 2</a></li>
+        <li><a href="SQL/SQL Day 3.html" target="_blank" aria-label="SQL Day 3">SQL DAY 3</a></li>
+        <li><a href="SQL/SQL Day 4.html" target="_blank" aria-label="SQL Day 4">SQL DAY 4</a></li>
+        <li><a href="SQL/SQL Day 5.html" target="_blank" aria-label="SQL Day 5">SQL DAY 5</a></li>
+        <li><a href="SQL/SQL Day 6.html" target="_blank" aria-label="SQL Day 6">SQL DAY 6</a></li>
+        <li><a href="SQL/SQL Day 7.html" target="_blank" aria-label="SQL Day 7">SQL DAY 7</a></li>
+        <li><a href="SQL/SQL Day 8.html" target="_blank" aria-label="SQL Day 8">SQL DAY 8</a></li>
+        <li><a href="SQL/SQL Day 9.html" target="_blank" aria-label="SQL Day 9">SQL DAY 9</a></li>
+        <li><a href="SQL/SQL Day 10.html" target="_blank" aria-label="SQL Day 10">SQL DAY 10</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

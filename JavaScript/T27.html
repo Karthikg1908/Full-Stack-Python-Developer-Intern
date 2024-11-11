@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        .number-guessing-game {
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        button {
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="number-guessing-game">
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" min="1" max="100">
+        <button onclick="checkGuess()">Check</button>
+        <div id="message"></div>
+        <button onclick="resetGame()">Reset</button>
+    </div>
+
+    <script>
+        let secretNumber;
+        let attempts = 0;
+
+        function startGame() {
+            secretNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            document.getElementById('message').textContent = '';
+        }
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guess').value);
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                document.getElementById('message').textContent = 'Please enter a number between 1 and 100';
+                return;
+            }
+            attempts++;
+            if (guess === secretNumber) {
+                document.getElementById('message').textContent = `Congratulations! You guessed the number in ${attempts} attempts`;
+            } else if (guess < secretNumber) {
+                document.getElementById('message').textContent = 'Too low! Try again';
+            } else {
+                document.getElementById('message').textContent = 'Too high! Try again';
+            }
+        }
+
+        function resetGame() {
+            document.getElementById('guess').value = '';
+            document.getElementById('message').textContent = '';
+            startGame();
+        }
+
+        window.onload = startGame;
+    </script>
+</body>
+</html>
+
