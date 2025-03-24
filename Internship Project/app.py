@@ -20,7 +20,10 @@ CORS(app)
 init_db()
 
 # Route for index page
-
+@app.route('/')
+def index():
+    return render_template('index.html')
+    
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT REGISTRATION +++++++++++++++++++++++++++++++
 
