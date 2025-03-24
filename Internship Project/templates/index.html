@@ -1,0 +1,55 @@
+<html lang = "en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireMe</title>
+    <link rel = 'stylesheet' href = "{{ url_for('static', filename='css/index.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>HireMe</h1>
+      <div class="login-buttons">
+        <button id="student-login-btn" url ='{{ url_for('student_login') }}'">Student Login</button>
+        <button id="recruiter-login-btn" url ='{{ url_for('recruiter_login') }}'">Recruiter Login</button>
+      </div>
+      <main>
+        <section class ="hero">
+          <img src = "{{ url_for('static', filename='images/logo.png') }}" alt = "Career with Exskilence Logo">
+          <div class = "negative">
+            <h3>Find jobs with HireMe</h3>
+            <p>We will hire you based on your skills</p>
+            <section class = "trusted-companies">
+              <h3>Top companies trust us</h3>
+              <div class = "companies">
+                <span>Meeshoo</span>
+                <span>TCS</span>
+                <span>CGI</span>
+                <span>ITS</span>
+                <span>HCL</span>
+                <span>Infosys</span>
+                <span>L&T</span>
+                <span>ApnaC</span>
+                <span>TPS</span>
+                <span>Figma</span>
+                <section class = "stats">
+                  <div class = "stats-parent-container">
+                    <div class = "stats-container">
+                      <div class = "stat-item">
+                        <div class = "stat-number">50+</div>
+                        <div class="stat-description">Active students</div>
+                        <div class ="start-career">
+                          <h4>Start your career with HireMe Today!</h4>
+                          <button id = "start-career-btn" url = "{{ url_for('student_login') }}">CLICK HERE TO LOGIN</button>
+                          <script src = "{{ url_for('static', filename='js/index.js') }}">
+                          </script>
+                        </div>
+                  </div>
+                </section>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </header>
+  </body>
+</html>
