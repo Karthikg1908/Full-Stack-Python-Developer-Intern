@@ -1,6 +1,6 @@
 document.getElementById('student_register').addEventListener('submit', function(event) {
     event.preventDefault();
-    const formData = {
+    const formData= {
       usn: document.getElementById('usn').value,
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
@@ -9,23 +9,24 @@ document.getElementById('student_register').addEventListener('submit', function(
       skills: document.getElementById('skills').value,
       branch: document.getElementById('branch').value,
       college_name: document.getElementById('college_name').value,
-      phone_number: document.getElementById('phone_number').value
-    }; fetch('/student_register', {
+      phone_number: document.getElementById('phone_number').value 
+    } 
+    fetch('/student_register', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json', 
-      }, body: JSON.stringify(formData)
-    }).then(response => response.json())
+      headers: { 
+        'Content-Type': 'application/json' ,
+      },  body: JSON.stringify(formData)
+   }).then(response => response.json())
       .then(data => {
-        if (data.redirected) {
-          alert('Student registered successfully!');
-          window.location.href = data.url;
-        } else {
-          console.log("something happened");
+          if (data.redirected) {
+              alert('Student registered successfully!');
+              window.location.href = data.url;
+          } else {
+              console.log("something happened");
               alert('Error: ' + data.message);
-          } }).catch(error => {
-        console.error('Error:', error);
-        alert('An unexpected error occurred. Please try again.');
-      });
+          }  }).catch(error => {
+          console.error('Error:', error);
+          alert('An unexpected error occurred. Please try again.');
+      }); 
   });
   

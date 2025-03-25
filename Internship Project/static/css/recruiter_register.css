@@ -1,0 +1,88 @@
+body{
+    font-family: 'Mallanna';
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin:0;
+  }
+  .form-container{
+    background-color:#D7EBEF;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width:800px;
+    height: 700px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-row{
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-column{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  .form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15%;
+    margin-right: 5%;
+  }
+  #confirm_pass_group{
+    margin-top: 48%;
+  }
+  label{
+    width: 40%;
+    margin-right: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  input{
+    width: 60%;
+    padding: 8px;
+    background-color:#EBF5F7;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+  }
+  select {
+    width: 60%;
+    padding: 8px;
+    background-color:#EBF5F7;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+  } 
+  hr{
+    margin: 20px 0;
+  }
+  button{
+    width: 20%;
+    padding: 10px;
+    background-color:#2B64D9;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left:40%;
+    margin-bottom: 5%;
+  }
+  button:hover{
+    background-color:  #003ec4;
+  }
+  p{
+    font-weight: bold;
+    text-align: center;
+    margin-top:5%;
+    font-size: 22px;
+    color:#555555;
+  }
+  h1{
+    text-align: center;
+    margin-left: 10%;
+    margin-bottom: 7%;
+  }

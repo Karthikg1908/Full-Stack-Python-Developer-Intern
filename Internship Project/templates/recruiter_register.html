@@ -1,0 +1,66 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Recruiter Registration</title>
+     <link href='https://fonts.googleapis.com/css?family=Mallanna' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recruiter_register.css') }}">
+  </head>
+  <body>
+    <main> 
+      <div>
+        <h1>
+          <u>Hello</u><u>Welcome to HireMe</u>
+        </h1>
+      </div>
+      <div class='form-container'>
+        <form id='recruiter_register' action='/recruiter_register' method='POST'> 
+          <div class='form-row'>
+            <div class='form-column'>
+              <div class='form-group' >
+                <label for='username'>Username</label>
+                <input type='text' id='username' name='username'> 
+              </div>
+              <div class='form-group' >
+                <label for='firstname'>First Name</label>
+                <input type='text' id='firstname' name='firstname'> 
+              </div>
+              <div class='form-group' >
+                <label for='lastname'>Last Name</label>
+                <input type='text' id='lastname' name='lastname'> 
+              </div>
+               <div class='form-group' >
+                <label for='email'>Email</label>
+                <input type='email' id='email' name='email'> 
+              </div>
+               <div class='form-group' >
+                <label for='password'>Set password</label>
+                <input type='password' id='password' name='password'> 
+              </div>
+            </div>
+            <div calss='form-column'>
+              <div class='form-group' >
+                <label for='phone_number'>Contact Number</label>
+                <input type='text' id='phone_number' name='phone_number'>  
+              </div>
+              <div class='form-group' >
+                <label for='company'>Company</label>
+                <input type='text' id='company' name='company'>  
+              </div> 
+              <div class='form-group' id='confirm_pass_group'>
+                <label for='confirm_password'>Confirm Password</label>
+                <input type='password' id='confirm_password' name='confirm_password'> 
+              </div>
+            </div>
+          </div>
+          <hr>
+          <button type='submit'>SIGNUP</button>
+        </form>
+      </div>
+      <footer>
+        <p>Start your recruiting journey with HireMe, Today!</p>
+      </footer>
+    </main>
+    <script src="{{ url_for('static', filename='js/recruiter_register.js') }}"></script> 
+  </body>
+</html>

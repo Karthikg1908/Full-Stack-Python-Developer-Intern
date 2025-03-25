@@ -1,82 +1,80 @@
-<html lang = "en">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
-    <link href = "https://fonts.googleapis.com/css?family=Mallanna" rel = "stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/student_register.css') }}">
-  </head>
-  <body>
+</head>
+<body>
     <main>
-      <div>
-        <h1>
-          <u>Hello</u>
-          <u> Welcome to HireMe</u>
-        </h1>
-      </div>
-      <div class = "form-container">
-        <form id = "student_register" action = "/student_register" method = "POST">
-          <div class = "form-row">
-            <div class = "form-column">
-              <div class = "form-group">
-                <div class="form-group">
-                  <label for="name">Student Name</label>
-                  <input type="text" id="name" name="name">
+        <div>
+            <h1>
+                <u>Hello</u>
+                <u>Welcome to HireMe</u>
+            </h1>
+        </div>
+        <div class="form-container">
+            <form id="student_register" action="/student_register" method="POST">
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="name">Student Name</label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="college_name">College Name</label>
+                            <input type="text" id="college_name" name="college_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="usn">USN</label>
+                            <input type="text" id="usn" name="usn">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email ID</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Set password</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="phone_number">Contact Number</label>
+                            <input type="text" id="phone_number" name="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch</label>
+                            <input type="text" id="branch" name="branch">
+                        </div>
+                        <div class="form-group-skills">
+                            <label for="skills">Skills</label>
+                            <select id="skills" name="skills" class="opion">
+                                <option value="">Select your skills</option>
+                                <option value="python">Python</option>
+                                <option value="java">Java</option>
+                                <option value="javascript">Javascript</option>
+                                <option value="csharp">C#</option>
+                                <option value="sql">SQL</option>
+                            </select>
+                        </div>
+                        <small>Select only one skill</small>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <label for="college_name">College Name</label>
-                  <input type="text" id="college_name" name="college_name">
-                </div>
-                <div class="form-group">
-                  <label for="usn">USN</label>
-                  <input type="text" id="usn" name="usn">
-                </div>
-                <div class="form-group">
-                  <label for="email">Email ID</label>
-                  <input type="email" id="email" name="email">
-                </div>
-                <div class="form-group">
-                  <label for="password">Set Password</label>
-                  <input type="password" id="password" name="password">
-                </div>
-              </div>
-              <div class="form-column">
-                <div class="form-group">
-                  <label for="phone_number">Contact Number</label>
-                  <input type="text" id="phone_number" name="phone_number">
-                </div>
-                <div class="form-group">
-                  <label for="branch">Branch</label>
-                  <input type="text" id="branch" name="branch">
-                </div>
-                <div class="form-group-skills">
-                  <label for="skills">Skills</label>
-                  <select id="skills" name="skills" class="opion">
-                    <option value="">Select your skills</option>
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
-                    <option value="javascript">Javascript</option>
-                    <option value="csharp">C#</option>
-                    <option value="sql">SQL</option>
-                  </select>
-                </div>
-                <small>Select only one skill</small>
-              </div>
-              <div class="form-group">
-                <label for = "confirm_password">Confirm Password</label>
-                <input type ="password" id = "confirm_password" name = "confirm_password">
-              </div>
-              <hr>
-              <button type ="submit">SIGNUP</button>
+                <hr>
+                <button type="submit">SIGNUP</button>
             </form>
-              </div>
-            <footer>
-              <p>Start your career with HireMe, Today!</p>
-            </footer>
-      
+        </div>
+        <footer>
+            <p>Start your career with HireMe, Today!</p>
+        </footer>
     </main>
-            <script src = "{{ url_for('static', filename='js/student_register.js') }}"></script>
-  </body>
+    <script src="{{ url_for('static', filename='js/student_register.js') }}"></script>
+</body>
 </html>
-
-            

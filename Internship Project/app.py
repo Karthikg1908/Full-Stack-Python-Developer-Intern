@@ -1,14 +1,14 @@
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 from database import init_db
-from pythonfiles.report import generate_report
-from pythonfiles.Student_reset_pass import update_student_password
-from pythonfiles.rec_forgotpassword import update_password
+# from pythonfiles.report import generate_report
+# from pythonfiles.Student_reset_pass import update_student_password
+# from pythonfiles.rec_forgotpassword import update_password
 from pythonfiles.recruiter_register import register_recruiter
-from pythonfiles.create_job import add_job
-from pythonfiles.recruiter_home import get_all_jobs
-from pythonfiles.Student_home import apply_job, fetch_job_details, get_jobs_by_application_status
-from pythonfiles.recruiterslogin import *
-from pythonfiles.students_login import *
+# from pythonfiles.create_job import add_job
+# from pythonfiles.recruiter_home import get_all_jobs
+# from pythonfiles.Student_home import apply_job, fetch_job_details, get_jobs_by_application_status
+# from pythonfiles.recruiterslogin import *
+# from pythonfiles.students_login import *
 from pythonfiles.Students_register import register_student
 from flask_cors import CORS
 
@@ -22,11 +22,10 @@ init_db()
 # Route for index page
 @app.route('/')
 def index():
-    return render_template('index.html')
-    
+    return render_template('index.html') 
+
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT REGISTRATION +++++++++++++++++++++++++++++++
-
 @app.route('/student_register', methods=['POST'])
 def student_register():
     data = request.get_json()
@@ -40,17 +39,30 @@ def student_register():
     college_name = data.get('college_name')
     phone_number = data.get('phone_number')
     return register_student(usn, name, email, password, confirmPassword, skills, branch, college_name, phone_number)
-    
 @app.route('/student_register')
 def student_register_page():
-    return render_template('student_register.html')
-
-
+    return render_template('student_register.html') 
 
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT REGISTRATION ++++++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF RECRUITER REGISTRATION +++++++++++++++++++++++++++++
-
+@app.route("/recruiter_register", methods=['POST'])
+def recruiter_register():
+    data = request.get_json()
+    username = data.get('username') 
+    firstname = data.get('firstname') 
+    lastname = data.get('lastname')
+    email = data.get('email')
+    password = data.get('password')
+    confirmPassword = data.get('confirm_password')
+    company = data.get('company') 
+    phone_number = data.get('phone_number')
+    return register_recruiter(username, firstname, lastname, email, password, confirmPassword, company, phone_number)
+@app.route('/recruiter_register')
+def recruiter_register_page():
+    return render_template('recruiter_register.html')
+    
+    
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER REGISTRATION ++++++++++++++++++++++++++++++
 
 # +++++++++++++++++++++++++++ CREATE JOB PAGE ++++++++++++++++++++++++++
