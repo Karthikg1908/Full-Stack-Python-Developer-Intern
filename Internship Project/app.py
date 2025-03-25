@@ -27,6 +27,25 @@ def index():
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT REGISTRATION +++++++++++++++++++++++++++++++
 
+@app.route('/student_register', methods=['POST'])
+def student_register():
+    data = request.get_json()
+    usn = data.get('usn')
+    name = data.get('name')
+    email = data.get('email')
+    password = data.get('password')
+    confirmPassword = data.get('confirm_password')
+    skills = data.get('skills')
+    branch = data.get('branch')
+    college_name = data.get('college_name')
+    phone_number = data.get('phone_number')
+    return register_student(usn, name, email, password, confirmPassword, skills, branch, college_name, phone_number)
+    
+@app.route('/student_register')
+def student_register_page():
+    return render_template('student_register.html')
+
+
 
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT REGISTRATION ++++++++++++++++++++++++++++++++
 
