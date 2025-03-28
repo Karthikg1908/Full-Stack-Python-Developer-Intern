@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create_job.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>Hireme</h1>
+      </div>
+    </header>
+    
+    <aside>
+      <nav>
+        <ul>
+          <li>Job</li>
+          <li>Report</li>
+        </ul>
+      </nav>
+    </aside>
+    
+    <main>
+      <form id="createJobForm">
+        <label for="jobRole">Job Role:</label>
+        <input type="text" id="jobRole" name="jobRole">
+        <br>
+        
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company">
+        <br>
+        
+        <label for="package">Package:</label>
+        <input type="text" id="package" name="package">
+        <br>
+        
+        <label for="jobDescription">Job Description:</label>
+        <textarea id="jobDescription" name="jobDescription"></textarea>
+        <br>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/create_job.js') }}"></script>
+  </body>
+</html>
