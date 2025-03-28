@@ -4,7 +4,7 @@ from database import init_db
 # from pythonfiles.Student_reset_pass import update_student_password
 # from pythonfiles.rec_forgotpassword import update_password
 from pythonfiles.recruiter_register import register_recruiter
-# from pythonfiles.create_job import add_job
+from pythonfiles.create_job import add_job
 # from pythonfiles.recruiter_home import get_all_jobs
 # from pythonfiles.Student_home import apply_job, fetch_job_details, get_jobs_by_application_status
 # from pythonfiles.recruiterslogin import *
@@ -66,6 +66,21 @@ def recruiter_register_page():
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER REGISTRATION ++++++++++++++++++++++++++++++
 
 # +++++++++++++++++++++++++++ CREATE JOB PAGE ++++++++++++++++++++++++++
+
+@app.route('/api/jobs', methods=['POST'])
+def api_add_job():
+    data = request.get_json()
+    job_role = data.get('job_role')
+    company = data.get('company')
+    package = data.get('package')
+    job_description = data.get('job_description')
+    add_job(job_role, company, package, job_description)
+    return jsonify({'success': True})
+    
+@app.route('/create_job_page')
+def create_job_page():
+    return render_template('create_job.html')
+    
 
 # +++++++++++++++++++++++++++ END OF CREATE JOB PAGE ++++++++++++++++++++++++++
 
