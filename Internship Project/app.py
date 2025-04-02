@@ -86,6 +86,17 @@ def create_job_page():
 
 # +++++++++++++++++++++++++++ START OF RECRUITER LOGIN ++++++++++++++++++++++++++
 
+@app.route('/recruiter_login', methods=['POST'])
+def recruiter_login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    return check_recruiter_login(username, password)
+    
+@app.route('/recruiter_login')
+def recruiter_login_page():
+    return render_template('recruiter_login.html')
+    
 
 # +++++++++++++++++++++++++++ END OF RECRUITER LOGIN ++++++++++++++++++++++++++
 
