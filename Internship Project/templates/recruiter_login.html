@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireMe - Recruiter Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recruiter_login.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1><u>Welcome to HireMe</u></h1>
+    </header>
+    <main>
+      <div class="login-container">
+        <form id="recruiterLoginForm">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <hr>
+          <div class="form-group-buttons">
+            <button type="submit">LOGIN</button>
+            <button type="button" id="signupButton">SIGNUP</button>
+            <button type="button" id="forgotButton">FORGOT PASSWORD</button>
+          </div>
+          <p>Start your recruiting journey with HireMe, Today!</p>
+        </form>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/recruiter_login.js') }}"></script>
+  </body>
+</html>
