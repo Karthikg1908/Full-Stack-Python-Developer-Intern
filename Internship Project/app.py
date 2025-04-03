@@ -102,6 +102,20 @@ def recruiter_login_page():
 
 # ++++++++++++++++++++++++++++++++++++++ RECRUITER HOME PAGE ++++++++++++++++++++++++++++++
 
+@app.route('/recruiter_home')
+def recruiter_home():
+    return render_template('recruiter_home.html')
+    
+@app.route('/recruiter/job/<int:job_id>')
+def recruiter_job_page(job_id):
+    return render_template('recruiter_job_details.html')
+    
+@app.route('/api/jobs', methods=['GET'])
+def api_get_jobs():
+    jobs = get_all_jobs()
+    return jsonify(jobs)
+    
+    
 
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER HOME PAGE ++++++++++++++++++++++++++++++
 
