@@ -74,3 +74,72 @@ In the final 10 days, I transitioned to learning **Python** for back-end develop
 - **SQL**: Database management and queries.
 - **Python**: Server-side programming and web application development.
 
+
+## Internship Project
+
+### **Project Name:**  
+**HireMe Web Application**
+
+### **Skills Required:**
+- **HTML**  
+- **CSS**  
+- **JavaScript**  
+- **SQL**  
+- **Python**
+
+### **Framework:**  
+**Flask**
+
+### **IDE:**  
+**VS Code**
+
+### **Project Description:**  
+The **HireMe Web Application** is a job recruitment platform designed to connect students seeking internships or job opportunities with recruiters. The platform allows users to register as either students or recruiters, post jobs, and apply for available positions. Students can view job details, apply to jobs, and update their profiles, while recruiters can post jobs, manage listings, and view applications. 
+
+#### Key Features:
+- **Student Registration & Login:** Allows students to create an account, log in, and view job listings.
+- **Recruiter Registration & Login:** Allows recruiters to create accounts, log in, and post job opportunities.
+- **Job Management:** Recruiters can create and manage job postings, and students can apply for jobs.
+- **Password Recovery:** Both students and recruiters can reset their passwords through email.
+- **Report Generation:** A report page summarizing student applications and job listings.
+
+### **UI/UX Design:**  
+[[View Figma Design](https://www.figma.com/proto/N5ub6RfA2mzO9GM0mIq4r3/Untitled?page-id=0%3A1&node-id=1-3&viewport=486%2C333%2C0.08&t=lvDluLLlWyEHI1yt-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A3)]
+
+---
+
+## Internship Overview:
+
+### **Project Setup:**
+This phase focused on setting up the overall project structure and initializing necessary files. Flask was used to set up the backend, while HTML, CSS, and JavaScript were used for the frontend. SQL was used to set up the database and manage user and job data.
+
+---
+
+### **Project Web Pages:**
+
+- **Database Setup:** Setting up the relational database to store user and job data, including tables for students, recruiters, and job postings.
+  
+- **Web Pages:**
+  - **Index**: The homepage where users can access the platform and view general information.
+  - **Student Register**: A page for students to register an account and provide personal information.
+  - **Recruiter Register**: A page for recruiters to create an account and manage job postings.
+  - **Create Job**: A recruiter-facing page for posting new job opportunities.
+  - **Recruiter Login**: A page for recruiters to log in to their accounts.
+  - **Recruiter Home**: The dashboard where recruiters can manage job postings, view applications, and generate reports.
+  - **Student Login**: A page for students to log in to their accounts.
+  - **Student Home**: The student dashboard where they can view job listings and apply to open positions.
+  - **Job Details**: A page displaying detailed information about a specific job listing.
+  - **Recruiter Job Details**: A page where recruiters can view more details about their posted jobs, applicants, and manage the listing.
+  - **Recruiter Forgot Password**: A page where recruiters can reset their password if they forget it.
+  - **Student Reset Password**: A page for students to reset their password.
+  - **Report**: A page summarizing job postings, applications, and user statistics.
+
+---
+
+## Technologies Used:
+- **HTML**: Structuring web content.
+- **CSS**: Styling and responsive web design.
+- **JavaScript**: Adding interactivity and dynamic functionality.
+- **SQL**: Database management and queries.
+- **Python**: Server-side programming and web application development.
+- **Flask**: Web framework for building the back-end of the application.
