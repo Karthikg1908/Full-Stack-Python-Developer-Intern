@@ -86,45 +86,14 @@ In the final 10 days, I transitioned to learning **Python** for back-end develop
 - **SQL**  
 - **Python**
 
-### **Framework:**  
-**Flask**
+### **Framework:**  **Flask**
 
-### **IDE:**  
-**VS Code**
+### **IDE:**  **VS Code**
 
 ### **Project Description:**  
 The **HireMe Web Application** is a job recruitment platform designed to connect students seeking internships or job opportunities with recruiters. The platform allows users to register as either students or recruiters, post jobs, and apply for available positions. Students can view job details, apply to jobs, and update their profiles, while recruiters can post jobs, manage listings, and view applications. 
 
 ---
-
-### **Project Timeline and Breakdown:**
-
-| **Task**                            | **Pages Involved**                                | **Technologies**                             | **Dates**          |
-|-------------------------------------|---------------------------------------------------|----------------------------------------------|--------------------|
-| **Setup Project File**              | Project setup, including initial files            | Flask, HTML, CSS, JavaScript, Python, SQL    | **19 Mar - 20 Mar**|
-| **Database Setup**                  | Tables: Student, Recruiter, Job, Student Application | SQL                                       | **19 Mar - 20 Mar**|
-| **Index**                           | Homepage (HTML, CSS, JS)                          | HTML, CSS, JavaScript, App.py                | **21 Mar - 23 Mar**|
-| **Student Register**                | Student registration page                         | HTML, CSS, JavaScript, Python, App.py        | **24 Mar - 24 Mar**|
-| **Recruiter Register**              | Recruiter registration page                       | HTML, CSS, JavaScript, Python, App.py        | **25 Mar - 27 Mar**|
-| **Create Job**                      | Job creation page for recruiters                  | HTML, CSS, JavaScript, Python, App.py        | **28 Mar - 29 Mar**|
-| **Recruiter Login**                 | Recruiter login page                              | HTML, CSS, JavaScript, Python, App.py        | **30 Mar - 31 Mar**|
-| **Recruiter Home**                  | Recruiter dashboard page                          | HTML, CSS, JavaScript, Python, App.py        | **01 Apr - 02 Apr**|
-| **Student Login**                   | Student login page                                | HTML, CSS, JavaScript, Python, App.py        | **03 Apr - 04 Apr**|
-| **Student Home**                    | Student dashboard page                            | HTML, CSS, JavaScript, Python, App.py        | **05 Apr - 06 Apr**|
-| **Job Details**                     | Job detail page                                   | HTML, CSS, JavaScript, App.py                | **07 Apr - 08 Apr**|
-| **Recruiter Job Details**           | Recruiter job management page                     | HTML, CSS, JavaScript                        | **09 Apr - 10 Apr**|
-| **Recruiter Forgot Password**       | Recruiter password reset page                     | HTML, CSS, JavaScript, Python, App.py        | **11 Apr - 14 Apr**|
-| **Student Reset Password**          | Student password reset page                       | HTML, CSS, JavaScript, Python, App.py        | **15 Apr - 17 Apr**|
-| **Report**                          | Report page summarizing job applications and listings | HTML, CSS, JavaScript, Python, App.py    | **18 Apr - 19 Apr**|
-
----
-
-#### Key Features:
-- **Student Registration & Login:** Allows students to create an account, log in, and view job listings.
-- **Recruiter Registration & Login:** Allows recruiters to create accounts, log in, and post job opportunities.
-- **Job Management:** Recruiters can create and manage job postings, and students can apply for jobs.
-- **Password Recovery:** Both students and recruiters can reset their passwords through email.
-- **Report Generation:** A report page summarizing student applications and job listings.
 
 ### **UI/UX Design:**  
 [[View Figma Design](https://www.figma.com/proto/N5ub6RfA2mzO9GM0mIq4r3/Untitled?page-id=0%3A1&node-id=1-3&viewport=486%2C333%2C0.08&t=lvDluLLlWyEHI1yt-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A3)]
@@ -158,6 +127,36 @@ This phase focused on setting up the overall project structure and initializing 
   - **Report**: A page summarizing job postings, applications, and user statistics.
 
 ---
+
+### **Project Timeline and Breakdown:**
+
+| **Task**                            | **Pages Involved**                                | **Technologies**                             | **Dates**          |
+|-------------------------------------|---------------------------------------------------|----------------------------------------------|--------------------|
+| **Setup Project File**              | Project setup, including initial files            | Flask, HTML, CSS, JavaScript, Python, SQL    | **19 Mar - 20 Mar**|
+| **Database Setup**                  | Tables: Student, Recruiter, Job, Student Application | SQL                                       | **19 Mar - 20 Mar**|
+| **Index**                           | Homepage (HTML, CSS, JS)                          | HTML, CSS, JavaScript, App.py                | **21 Mar - 23 Mar**|
+| **Student Register**                | Student registration page                         | HTML, CSS, JavaScript, Python, App.py        | **24 Mar - 24 Mar**|
+| **Recruiter Register**              | Recruiter registration page                       | HTML, CSS, JavaScript, Python, App.py        | **25 Mar - 27 Mar**|
+| **Create Job**                      | Job creation page for recruiters                  | HTML, CSS, JavaScript, Python, App.py        | **28 Mar - 29 Mar**|
+| **Recruiter Login**                 | Recruiter login page                              | HTML, CSS, JavaScript, Python, App.py        | **30 Mar - 31 Mar**|
+| **Recruiter Home**                  | Recruiter dashboard page                          | HTML, CSS, JavaScript, Python, App.py        | **01 Apr - 02 Apr**|
+| **Student Login**                   | Student login page                                | HTML, CSS, JavaScript, Python, App.py        | **03 Apr - 04 Apr**|
+| **Student Home**                    | Student dashboard page                            | HTML, CSS, JavaScript, Python, App.py        | **05 Apr - 06 Apr**|
+| **Job Details**                     | Job detail page                                   | HTML, CSS, JavaScript, App.py                | **07 Apr - 08 Apr**|
+| **Recruiter Job Details**           | Recruiter job management page                     | HTML, CSS, JavaScript                        | **09 Apr - 10 Apr**|
+| **Recruiter Forgot Password**       | Recruiter password reset page                     | HTML, CSS, JavaScript, Python, App.py        | **11 Apr - 14 Apr**|
+| **Student Reset Password**          | Student password reset page                       | HTML, CSS, JavaScript, Python, App.py        | **15 Apr - 17 Apr**|
+| **Report**                          | Report page summarizing job applications and listings | HTML, CSS, JavaScript, Python, App.py    | **18 Apr - 19 Apr**|
+
+---
+
+#### Key Features:
+- **Student Registration & Login:** Allows students to create an account, log in, and view job listings.
+- **Recruiter Registration & Login:** Allows recruiters to create accounts, log in, and post job opportunities.
+- **Job Management:** Recruiters can create and manage job postings, and students can apply for jobs.
+- **Password Recovery:** Both students and recruiters can reset their passwords through email.
+- **Report Generation:** A report page summarizing student applications and job listings.
+
 
 ## Technologies Used:
 - **HTML**: Structuring web content.
