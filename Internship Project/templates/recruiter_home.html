@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recruiter_home.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>HireMe</h1>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </header>
+    <main>
+      <div class="sidebar">
+        <h2>Jobs</h2>
+        <h2 id="reports">Report</h2>
+      </div>
+      <div class="content">
+        <table id="jobsTable" border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Job Role</th>
+              <th>Company</th>
+              <th>Package</th>
+              <th>Job Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be added dynamically here -->
+          </tbody>
+        </table>
+        <button id="create-job-btn">Create New Job</button>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/recruiter_home.js') }}"></script>
+  </body>
+</html>
