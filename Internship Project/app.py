@@ -7,8 +7,8 @@ from pythonfiles.recruiter_register import register_recruiter
 from pythonfiles.create_job import add_job
 # from pythonfiles.recruiter_home import get_all_jobs
 # from pythonfiles.Student_home import apply_job, fetch_job_details, get_jobs_by_application_status
-# from pythonfiles.recruiterslogin import *
-# from pythonfiles.students_login import *
+from pythonfiles.recruiterslogin import *
+from pythonfiles.students_login import *
 from pythonfiles.Students_register import register_student
 from flask_cors import CORS
 
@@ -120,6 +120,18 @@ def api_get_jobs():
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER HOME PAGE ++++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT LOGIN +++++++++++++++++++++++++++++
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    usn = data.get('usn')
+    password = data.get('password')
+    return check_student_login(usn, password)
+    
+@app.route('/student_login')
+def student_login():
+    return render_template('student_login.html')
+    
 
 
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT LOGIN +++++++++++++++++++++++++++++
