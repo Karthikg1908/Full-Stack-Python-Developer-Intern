@@ -1,0 +1,113 @@
+/* Body CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+/* Header CSS */
+header {
+    text-align: center;
+    margin-top: 5%;
+}
+
+/* Header h1 CSS */
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Main CSS */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(75vh - 80px);
+    text-align: center;
+}
+
+/* Login Container CSS */
+.login-container {
+    background-color: #D7EBEF;
+    border: 1px solid black;
+    padding: 40px;
+    margin-top: 1%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Form Group CSS */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    padding-bottom: 5%;
+}
+
+/* Label CSS */
+label {
+    margin-bottom: 5px;
+    padding-bottom: 5%;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Input[type="text"] CSS */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Input Focus CSS */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* HR CSS */
+hr {
+    border: 1px solid #cccccc;
+    margin: 20px 0;
+}
+
+/* Form Group Buttons CSS */
+.form-group-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 30%;
+}
+
+/* Button CSS */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Button Hover CSS */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Paragraph CSS */
+p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
