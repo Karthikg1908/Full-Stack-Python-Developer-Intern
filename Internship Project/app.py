@@ -138,6 +138,42 @@ def student_login():
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT HOME PAGE +++++++++++++++++++++++++++++
 
+@app.route('/api/apply_job', methods=['POST'])
+
+def apply_job_route():
+    data = request.get_json()
+    usn1 = session.get('usn')
+    job_id = data.get('job_id')
+    apply_job(usn1, job_id)
+    return jsonify({'success': True})
+    
+@app.route('/student_home')
+def student_home():
+    return render_template('student_home.html')
+
+@app.route('/api/jobs_by_status', methods=['GET'])
+def api_get_jobs_by_status():
+    usn2 = session.get('usn')
+    if not usn2:
+        return jsonify({'error': 'Unauthorized'}), 401
+    categorized_jobs = get_jobs_by_application_status(usn2)
+    return jsonify(categorized_jobs) 
+    
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('student_login'))
+
+@app.route('/api/job_details/<int:job_id>')
+def job_details(job_id):
+    job = fetch_job_details(job_id)
+    if job:
+        return jsonify(job)
+    else:
+        return jsonify({'error': 'Job not found'}), 404 
+        
+
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT HOME PAGE +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF JOB DETAILS +++++++++++++++++++++++++++++
