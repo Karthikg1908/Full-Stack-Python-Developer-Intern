@@ -1,0 +1,30 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/student_home.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class='header-container'>
+        <h1>HireMe</h1>
+        <button id='logout-btn'>Logout</button>
+      </div>
+    </header> 
+    <main>
+      <div class='sidebar'>
+        <h2>Jobs</h2>
+      </div>
+      <div class='content'>
+        <div class='job-list' id='jobsTableNotApplied'>
+          <h3>Jobs to Apply</h3>
+        </div>
+        <div class='job-list' id='jobsTableApplied'>
+          <h3>Jobs Applied</h3>
+        </div> 
+      </div>
+    </main>  
+    <script src="{{ url_for('static',filename='js/student_home.js') }}"></script>
+  </body>
+</html>
