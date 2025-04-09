@@ -178,6 +178,11 @@ def job_details(job_id):
 
 # ++++++++++++++++++++++++++++++++++++++ START OF JOB DETAILS +++++++++++++++++++++++++++++
 
+@app.route('/job/<int:job_id>')
+def job_page(job_id):
+    return render_template('job_details.html')
+    
+
 # ++++++++++++++++++++++++++++++++++++++ END OF JOB DETAILS +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF RECRUITER FORGOT PASSWORD +++++++++++++++++++++++++++++
