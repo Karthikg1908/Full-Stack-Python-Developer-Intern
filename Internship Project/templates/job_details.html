@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/job_details.css') }}">
+    <title>Job Details</title>
+  </head>
+  <body>
+    <header>
+      <h1>Hireme</h1>
+    </header>
+    <main class="container">
+      <div class="sidebar">
+        <h2>Job</h2>
+      </div>
+      <div class="job-details">
+        <h2 id="jobRole"></h2>
+        <p id="company"></p>
+        <p id="package"></p>
+        <p id="jobDescription"></p>
+        <button id="back-to-home">Back</button>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/job_details.js') }}"></script>
+  </body>
+</html>
+
