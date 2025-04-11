@@ -187,6 +187,21 @@ def job_page(job_id):
 
 # ++++++++++++++++++++++++++++++++++++++ START OF RECRUITER FORGOT PASSWORD +++++++++++++++++++++++++++++
 
+@app.route('/rec_forgot_password')
+def forgot_password_page():
+     return render_template('rec_forgot_password.html')
+     
+@app.route("/forgot_password", methods=['POST'])
+def  forgot_password():
+    data = request.get_json()
+    username = data.get('username')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+    if new_password != confirm_password:
+        return jsonify({'success': False, 'message': 'Passwords do not match'})
+    return update_password(username, new_password)
+        
+    
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER FORGOT PASSWORD ++++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
