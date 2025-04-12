@@ -206,6 +206,21 @@ def  forgot_password():
 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
 
+@app.route('/reset-password', methods=['POST'])
+def reset_password():
+    data = request.get_json()
+    usn = data.get('usn')
+    email = data.get('email')
+    new_password = data.get('new_password')
+    if not usn or not email or not new_password:
+        return jsonify({'success': False, 'message': 'Please fill all the fields'}), 400
+    return update_student_password(usn, email, new_password)
+
+@app.route('/reset-password-page')
+def reset_password_page():
+    return render_template('student_reset_password.html')
+    
+
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF REPORT PAGE +++++++++++++++++++++++++++++
