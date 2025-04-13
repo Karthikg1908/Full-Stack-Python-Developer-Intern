@@ -224,6 +224,17 @@ def reset_password_page():
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF REPORT PAGE +++++++++++++++++++++++++++++
+
+@app.route('/report')
+def report_page():
+    return render_template('report.html')
+    
+@app.route('/api/report')
+def api_report_data():
+    report_data = generate_report()
+    return jsonify(report_data)
+    
+
 # ++++++++++++++++++++++++++++++++++++++ END OF REPORT PAGE +++++++++++++++++++++++++++++
 
 if __name__ == '__main__':
