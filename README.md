@@ -112,7 +112,7 @@ The **HireMe Web Application** is a job recruitment platform designed to connect
 ---
 
 ### **UI/UX Design:**  
-[[View Figma Design](https://www.figma.com/proto/N5ub6RfA2mzO9GM0mIq4r3/Untitled?page-id=0%3A1&node-id=1-3&viewport=486%2C333%2C0.08&t=lvDluLLlWyEHI1yt-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A3)]
+[View Figma Design(https://www.figma.com/proto/N5ub6RfA2mzO9GM0mIq4r3/Untitled?page-id=0%3A1&node-id=1-3&viewport=486%2C333%2C0.08&t=lvDluLLlWyEHI1yt-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A3)]
 
 ---
 
