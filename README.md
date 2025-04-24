@@ -67,6 +67,22 @@ In the final 10 days, I transitioned to learning **Python** for back-end develop
 
 ---
 
+### Project Work
+
+**📆 Duration:** `March 19 – April 19`  
+
+Applied Python and back-end knowledge in a real-world project setting. Covered complete development and integration cycles.
+
+---
+
+### 📚 Data Structures & Algorithms (DSA)
+
+**📆 Duration:** `April 21 – April 30`  
+
+Kicked off structured learning of DSA fundamentals. Currently working through core data structures and algorithms.
+
+---
+
 ## Technologies Used
 - **HTML**: Structuring web content.
 - **CSS**: Styling and responsive web design.
