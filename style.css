@@ -1,0 +1,347 @@
+/* --- Global Styles --- */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #ff4081;
+    --hover-accent-color: #FF6347;
+    --background-color: #f4f4f9;
+    --button-hover-color: #ffd700;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --hover-shadow: rgba(0, 0, 0, 0.25);
+    --font-family: 'Times New Roman', Times, serif;
+    --font-size-large: 3.2em;
+    --font-size-medium: 1.8em;
+    --font-size-small: 1.1em;
+    --transition-speed: 0.5s;
+    --border-radius: 8px;
+}
+
+/* --- General Body and Layout --- */
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+/* --- Header --- */
+header {
+    width: 100%;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background-color var(--transition-speed) ease;
+}
+
+header h1 {
+    font-size: var(--font-size-large);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Navigation --- */
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-out;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--hover-accent-color);
+}
+
+nav a:hover {
+    background-color: rgba(255, 99, 71, 0.2);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px var(--hover-shadow);
+}
+
+nav a.active {
+    font-weight: 700;
+    border-bottom: 3px solid var(--hover-accent-color);
+    padding-bottom: 10px;
+}
+
+nav a:focus {
+    outline: none;
+    box-shadow: 0 0 6px 2px rgba(255, 99, 71, 0.4);
+}
+
+/* --- Main Container --- */
+.container {
+    width: 85%;
+    max-width: 900px;
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 12px 30px var(--shadow-color);
+    margin-bottom: 40px;
+    transition: box-shadow var(--transition-speed) ease;
+}
+
+.container:hover {
+    box-shadow: 0 18px 45px var(--hover-shadow);
+}
+
+/* --- Typography --- */
+h1, h3 {
+    text-align: center;
+    color: var(--text-color);
+    text-shadow: 1px 1px 3px var(--shadow-color);
+}
+
+h1 {
+    font-size: var(--font-size-large);
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: var(--font-size-medium);
+    margin-bottom: 30px;
+}
+
+/* --- Task List Grid --- */
+.task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Task Items --- */
+.task-list li {
+    padding: 25px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0 12px 30px var(--shadow-color);
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    position: relative;
+    cursor: pointer;
+}
+
+.task-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 16px 45px var(--hover-shadow);
+}
+
+/* --- Task Links --- */
+.task-list a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.3em;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.task-list a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+/* --- Task Background Colors --- */
+.task-list li:nth-child(12n+1) { background: linear-gradient(135deg, #ffe0e0, #ffc1c1); border-color: #ff8a80; }
+.task-list li:nth-child(12n+2) { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); border-color: #4dd0e1; }
+.task-list li:nth-child(12n+3) { background: linear-gradient(135deg, #f3e5f5, #e1bee7); border-color: #ba68c8; }
+.task-list li:nth-child(12n+4) { background: linear-gradient(135deg, #f1f8e9, #dcedc8); border-color: #aed581; }
+.task-list li:nth-child(12n+5) { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-color: #ffb74d; }
+.task-list li:nth-child(12n+6) { background: linear-gradient(135deg, #ede7f6, #d1c4e9); border-color: #9575cd; }
+.task-list li:nth-child(12n+7) { background: linear-gradient(135deg, #e8eaf6, #c5cae9); border-color: #7986cb; }
+.task-list li:nth-child(12n+8) { background: linear-gradient(135deg, #fffde7, #fff9c4); border-color: #fff176; }
+.task-list li:nth-child(12n+9) { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); border-color: #4db6ac; }
+.task-list li:nth-child(12n+10) { background: linear-gradient(135deg, #fbe9e7, #ffccbc); border-color: #ff8a65; }
+.task-list li:nth-child(12n+11) { background: linear-gradient(135deg, #f9fbe7, #f0f4c3); border-color: #dce775; }
+.task-list li:nth-child(12n) { background: linear-gradient(135deg, #e1f5fe, #b3e5fc); border-color: #4fc3f7; }
+
+/* Hover Gradient Tweaks */
+.task-list li:nth-child(12n+1):hover { background: linear-gradient(135deg, #ffc1c1, #ff8a80); }
+.task-list li:nth-child(12n+2):hover { background: linear-gradient(135deg, #b2ebf2, #4dd0e1); }
+/* etc. same pattern for all... */
+
+/* --- Button Styling --- */
+button {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 25px var(--hover-shadow);
+    transition: all var(--transition-speed) ease;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px var(--hover-shadow);
+}
+
+/* --- Internship Project Section --- */
+#internship-project-details {
+    width: 90%;
+    max-width: 1100px;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px var(--shadow-color);
+    margin-top: 40px;
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+#internship-project-details:hover {
+    box-shadow: 0 18px 45px var(--hover-shadow);
+    transform: translateY(-5px);
+}
+
+.internship-project-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.internship-project-subheader {
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.internship-project-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.internship-project-list {
+    font-size: var(--font-size-small);
+    list-style: disc;
+    padding-left: 35px;
+    line-height: 1.7;
+}
+
+.internship-project-list li {
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.internship-project-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.internship-project-link {
+    color: black;
+    font-weight: 600; /* Slightly lighter weight for better readability */
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px; /* Adds a bit of spacing between letters for clarity */
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+    border-bottom: 2px solid transparent; /* Subtle underline effect */
+    padding-bottom: 2px; /* Creates space for the underline */
+}
+
+.internship-project-link:hover {
+    color: var(--secondary-color);
+    text-decoration: none; /* Removes default underline */
+    transform: scale(1.05) translateY(-2px); /* Adds a small lift for emphasis */
+    border-bottom: 2px solid var(--secondary-color); /* Adds underline effect on hover */
+}
+
+/* Underline utility class */
+.underline {
+    text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.4em; }
+    nav { flex-direction: column; align-items: center; }
+    nav a { font-size: 1.2em; }
+    .container, #internship-project-details { padding: 25px; }
+    .task-list { grid-template-columns: 1fr; }
+}
+
+.internship-project-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.project-image-wrapper {
+    flex: 0 0 calc(50% - 20px); /* 50% width minus gap */
+    display: flex;
+    justify-content: center;
+}
+
+.project-result-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s;
+}
+
+/* Optional: Add a zoom effect on hover */
+.project-result-img:hover {
+    transform: scale(1.05);
+}
+
+/* Make it responsive for mobile */
+@media (max-width: 768px) {
+    .project-image-wrapper {
+        flex: 0 0 100%;
+    }
+}
+

@@ -3,399 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Gallery</title>
-    <style>
-    /* Global Styles */
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #9b59b6, #6a89cc);
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    /* Header Styles */
-    header {
-        width: 100%;
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        padding: 5px 0;
-        color: white;
-        text-align: center;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
-        font-family: 'Poppins', sans-serif;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 2.5em;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-
-    nav {
-        margin-top: 20px;
-    }
-
-    nav a {
-        color: #f8f9fa;
-        text-decoration: none;
-        margin: 0 20px;
-        font-size: 1.4em;
-        font-weight: 500;
-        padding: 8px 15px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50px;
-        transition: all 0.4s ease;
-    }
-
-    nav a:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-        color: #ffd700;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transform: translateY(-3px);
-    }
-
-    nav a.active {
-        color: #ffdd57;
-        font-weight: 700;
-    }
-
-    /* Container Styles */
-    .container {
-        width: 80%;
-        max-width: 1200px;
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-        margin-bottom: 40px;
-    }
-
-    /* Common Styles */
-    h1, h3 {
-        text-align: center;
-        color: #2c3e50;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
-    h3 {
-        font-size: 1.5em;
-        margin-bottom: 30px;
-    }
-
-    /* Task List Styles */
-    .task-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 25px;
-        padding: 0;
-        list-style: none;
-        margin: 0;
-    }
-
-    /* Individual Task Styles */
-    .task-list li {
-        background-color: #ffffff;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-align: center;
-        cursor: pointer;
-        border: 10px solid #ddd;
-    }
-
-    .task-list li:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        background-color: #e0f7fa;
-    }
-
-    /* Link Styles */
-    .task-list a {
-        text-decoration: none;
-        color: #3498db;
-        font-size: 1.3em;
-        font-weight: 600;
-        transition: color 0.3s ease, transform 0.2s ease;
-    }
-
-    .task-list a:hover {
-        color: #2980b9;
-        transform: scale(1.05);
-    }
-
-    /* Specific Task Background Colors */
-    .task-list li:nth-child(odd) {
-        background-color: #fce4ec;
-    }
-
-    .task-list li:nth-child(even) {
-        background-color: #e1f5fe;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        .task-list {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* Individual Task Styles */
-    .task-list li {
-        padding: 18px;
-        border-radius: 30px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        justify-content: center;
-        cursor: pointer;
-        flex-shrink: 0;
-        width: 280px; 
-        text-align: center; 
-        font-size: 1.1em; 
-    }
-
-	.task-list li:nth-child(1) {
-		background-color: #fce4ec;
-		border: 2px solid #f48fb1;
-	}
-	.task-list li:nth-child(2) {
-		background-color: #e1f5fe;
-		border: 2px solid #81d4fa;
-	}
-	.task-list li:nth-child(3) {
-		background-color: #fffde7;
-		border: 2px solid #ffe57f;
-	}
-	.task-list li:nth-child(4) {
-		background-color: #e8f5e9;
-		border: 2px solid #a5d6a7;
-	}
-	.task-list li:nth-child(5) {
-		background-color: #f3e5f5;
-		border: 2px solid #ce93d8;
-	}
-	.task-list li:nth-child(6) {
-		background-color: #f0f4c3;
-		border: 2px solid #dce775;
-	}
-	.task-list li:nth-child(7) {
-		background-color: #ffe0b2;
-		border: 2px solid #ffb74d;
-	}
-	.task-list li:nth-child(8) {
-		background-color: #e0f7fa;
-		border: 2px solid #80deea;
-	}
-	.task-list li:nth-child(9) {
-		background-color: #f1f8e9;
-		border: 2px solid #c5e1a5;
-	}
-	.task-list li:nth-child(10) {
-		background-color: #fce4ec;
-		border: 2px solid #f48fb1;
-	}
-	.task-list li:nth-child(11) {
-		background-color: #e8eaf6;
-		border: 2px solid #9fa8da;
-	}
-	.task-list li:nth-child(12) {
-		background-color: #f3e5f5;
-		border: 2px solid #ce93d8;
-	}
-	.task-list li:nth-child(13) {
-		background-color: #e1f5fe;
-		border: 2px solid #81d4fa;
-	}
-	.task-list li:nth-child(14) {
-		background-color: #fff3e0;
-		border: 2px solid #ffcc80;
-	}
-	.task-list li:nth-child(15) {
-		background-color: #e0f2f1;
-		border: 2px solid #80cbc4;
-	}
-	.task-list li:nth-child(16) {
-		background-color: #f9fbe7;
-		border: 2px solid #c6ff00;
-	}
-	.task-list li:nth-child(17) {
-		background-color: #ffe0b2;
-		border: 2px solid #ffb74d;
-	}
-	.task-list li:nth-child(18) {
-		background-color: #e0f7fa;
-		border: 2px solid #80deea;
-	}
-	.task-list li:nth-child(19) {
-		background-color: #f1f8e9;
-		border: 2px solid #c5e1a5;
-	}
-	.task-list li:nth-child(20) {
-		background-color: #e3f2fd;
-		border: 2px solid #90caf9;
-	}
-	.task-list li:nth-child(21) {
-		background-color: #f0f4c3;
-		border: 2px solid #dce775;
-	}
-	.task-list li:nth-child(22) {
-		background-color: #ffe0b2;
-		border: 2px solid #ffb74d;
-	}
-	.task-list li:nth-child(23) {
-		background-color: #e0f7fa;
-		border: 2px solid #80deea;
-	}
-	.task-list li:nth-child(24) {
-		background-color: #f3e5f5;
-		border: 2px solid #ce93d8;
-	}
-	.task-list li:nth-child(25) {
-		background-color: #e1f5fe;
-		border: 2px solid #81d4fa;
-	}
-	.task-list li:nth-child(26) {
-		background-color: #fffde7;
-		border: 2px solid #ffe57f;
-	}
-	.task-list li:nth-child(27) {
-		background-color: #e8f5e9;
-		border: 2px solid #a5d6a7;
-	}
-	.task-list li:nth-child(28) {
-		background-color: #fce4ec;
-		border: 2px solid #f48fb1;
-	}
-	.task-list li:nth-child(29) {
-		background-color: #f9fbe7;
-		border: 2px solid #c6ff00;
-	}
-	.task-list li:nth-child(30) {
-		background-color: #e0e0e0;
-		border: 2px solid #bdbdbd;
-	}
-
-	.task-list li:hover {
-		transform: translateY(-8px) scale(1.02);
-		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-	}
-
-	.task-list li:hover:nth-child(1) {
-		background-color: #f8bbd0;
-	}
-	.task-list li:hover:nth-child(2) {
-		background-color: #b3e5fc;
-	}
-	.task-list li:hover:nth-child(3) {
-		background-color: #fff9c4;
-	}
-	.task-list li:hover:nth-child(4) {
-		background-color: #c8e6c9;
-	}
-	.task-list li:hover:nth-child(5) {
-		background-color: #e1bee7;
-	}
-	.task-list li:hover:nth-child(6) {
-		background-color: #e6ee9c;
-	}
-	.task-list li:hover:nth-child(7) {
-		background-color: #ffcc80;
-	}
-	.task-list li:hover:nth-child(8) {
-		background-color: #80deea;
-	}
-	.task-list li:hover:nth-child(9) {
-		background-color: #c5e1a5;
-	}
-	.task-list li:hover:nth-child(10) {
-		background-color: #f8bbd0;
-	}
-	.task-list li:hover:nth-child(11) {
-		background-color: #9fa8da;
-	}
-	.task-list li:hover:nth-child(12) {
-		background-color: #e1bee7;
-	}
-	.task-list li:hover:nth-child(13) {
-		background-color: #81d4fa;
-	}
-	.task-list li:hover:nth-child(14) {
-		background-color: #ffcc80;
-	}
-	.task-list li:hover:nth-child(15) {
-		background-color: #80cbc4;
-	}
-	.task-list li:hover:nth-child(16) {
-		background-color: #c6ff00;
-	}
-	.task-list li:hover:nth-child(17) {
-		background-color: #ffb74d;
-	}
-	.task-list li:hover:nth-child(18) {
-		background-color: #80deea;
-	}
-	.task-list li:hover:nth-child(19) {
-		background-color: #c5e1a5;
-	}
-	.task-list li:hover:nth-child(20) {
-		background-color: #90caf9;
-	}
-	.task-list li:hover:nth-child(21) {
-		background-color: #dce775;
-	}
-	.task-list li:hover:nth-child(22) {
-		background-color: #ffb74d;
-	}
-	.task-list li:hover:nth-child(23) {
-		background-color: #80deea;
-	}
-	.task-list li:hover:nth-child(24) {
-		background-color: #ce93d8;
-	}
-	.task-list li:hover:nth-child(25) {
-		background-color: #81d4fa;
-	}
-	.task-list li:hover:nth-child(26) {
-		background-color: #ffe57f;
-	}
-	.task-list li:hover:nth-child(27) {
-		background-color: #a5d6a7;
-	}
-	.task-list li:hover:nth-child(28) {
-		background-color: #f8bbd0;
-	}
-	.task-list li:hover:nth-child(29) {
-		background-color: #c6ff00;
-	}
-	.task-list li:hover:nth-child(30) {
-		background-color: #bdbdbd;
-	}
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Full-Stack Development Intern</title>
 </head>
 <body>
 <header>
-        <h1 style="font-family: 'Times New Roman', Times, serif; color: red; text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;">Internship Diary</h1>
+        <h1 style="font-family: 'Times New Roman', Times, serif; color: red; text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;">Full-Stack Development Intern</h1>
 		<nav style="font-family: 'Times New Roman', Times, serif;">
 			<a href="#html-css">HTML & CSS Tasks</a>
 			<a href="#javascript">JavaScript Tasks</a>
 			<a href="#sql">SQL Tasks</a>
 			<a href="#python">Python Tasks</a>
+			<a href="#dsa">DSA Tasks</a>
+			<a href="#dsa">Project</a>
 		</nav>
 
     </header>
@@ -509,6 +129,110 @@
 
             </ul>
         </div>
+        <div id="dsa">
+    <div class="right-column">
+        <h1>DSA Tasks</h1>
+        <h3>These are the DSA problems I practiced during my internship.</h3>
+        <ul class="task-list">
+            <li><a href="DSA/Day1.html" target="_blank" aria-label="DSA Day 1">DSA DAY 1</a></li>
+            <li><a href="DSA/Day2.html" target="_blank" aria-label="DSA Day 2">DSA DAY 2</a></li>
+            <li><a href="DSA/Day3.html" target="_blank" aria-label="DSA Day 3">DSA DAY 3</a></li>
+            <li><a href="DSA/Day4.html" target="_blank" aria-label="DSA Day 4">DSA DAY 4</a></li>
+            <li><a href="DSA/Day5.html" target="_blank" aria-label="DSA Day 5">DSA DAY 5</a></li>
+            <li><a href="DSA/Day6.html" target="_blank" aria-label="DSA Day 6">DSA DAY 6</a></li>
+            <li><a href="DSA/Day7.html" target="_blank" aria-label="DSA Day 7">DSA DAY 7</a></li>
+            <li><a href="DSA/Day8.html" target="_blank" aria-label="DSA Day 8">DSA DAY 8</a></li>
+            <li><a href="DSA/Day9.html" target="_blank" aria-label="DSA Day 9">DSA DAY 9</a></li>
+            <li><a href="DSA/Day10.html" target="_blank" aria-label="DSA Day 10">DSA DAY 10</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="internship-project-details">
+    <div class="internship-right-column">
+        <h1 class="internship-project-header">Internship Project</h1>
+        <h3 class="internship-project-subheader">These are the details of the project I developed during my internship.</h3>
+
+        <h2 class="internship-project-title">
+            Project Name: <span class="underline" style="color: black;">HireMe Web Application</span>
+
+        </h2>
+
+        <h2 class="internship-project-title">Skills Required:</h2>
+        <ul class="internship-project-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>SQL</li>
+            <li>Python</li>
+        </ul>
+
+        <h2 class="internship-project-title">Framework: Flask
+        <span style="color: black;">Flask</span>
+        </h2>
+
+<h2 class="internship-project-title">IDE:<span style="color: black;">VS Code</span> </h2>
+
+
+        <h2 class="internship-project-title">UI/UX Design: 
+            <a class="internship-project-link" href="https://www.figma.com/proto/N5ub6RfA2mzO9GM0mIq4r3/Untitled?page-id=0%3A1&node-id=1-3&viewport=486%2C333%2C0.08&t=lvDluLLlWyEHI1yt-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A3" target="_blank"><u>View Figma Design</u></a>
+        </h2>
+
+        <h2 class="internship-project-title">Main Pages:</h2>
+        <ul class="internship-project-list">
+            <li>index.html – Homepage with platform intro</li>
+            <li>student_register.html – Student registration form</li>
+            <li>recruiter_register.html – Recruiter registration form</li>
+            <li>student_login.html – Student login portal</li>
+            <li>recruiter_login.html – Recruiter login portal</li>
+            <li>student_home.html – Student dashboard to view & apply to jobs</li>
+            <li>recruiter_home.html – Recruiter dashboard to manage job postings</li>
+            <li>create_job.html – Page for recruiters to post new jobs</li>
+            <li>job_details.html – Job description view for students</li>
+            <li>recruiter_job_details.html – Recruiter view with job applicants</li>
+            <li>student_reset_password.html – Password recovery for students</li>
+            <li>recruiter_forgot_password.html – Password recovery for recruiters</li>
+            <li>report.html – Dashboard summary for recruiters</li>
+        </ul>
+
+        <h2 class="internship-project-title">🧩 Key Functionalities</h2>
+        <ul class="internship-project-list">
+            <li>✅ <strong>Secure Registration/Login</strong> – Separate login systems for students and recruiters.</li>
+            <li>📄 <strong>Job Posting & Management</strong> – Recruiters can post jobs, edit, delete, and view applicants.</li>
+            <li>📌 <strong>Job Listings & Applications</strong> – Students can browse available jobs and apply instantly.</li>
+            <li>🔐 <strong>Password Recovery System</strong> – Email-based password reset for both roles.</li>
+            <li>📧 <strong>Application Response via Email</strong> – Recruiters can send customized acceptance or rejection emails to applicants.</li>
+            <li>📞 <strong>Direct Contact Feature</strong> – Recruiters can reach out to students for further communication.</li>
+            <li>📊 <strong>Application Reports</strong> – Recruiters can view statistics on applications and postings.</li>
+            <li>🚫 <strong>Job Status Control</strong> – Closed jobs are hidden from students and cannot be applied to.</li>
+        </ul>
+        <!-- GitHub Project Link -->
+<h2 class="internship-project-title" style="margin-top: 40px;">
+    Explore Project Code: 
+    <a class="internship-project-link" href="https://github.com/your-username/your-repo-name" target="_blank" rel="noopener noreferrer" style="display: inline;">
+        <u>View on GitHub</u>
+    </a>
+</h2>
+
+       <!-- Project Results Section -->
+<!-- Project Results Section -->
+<h2 class="internship-project-title">📷 Project Results:</h2>
+<div class="internship-project-images">
+    <div class="project-image-wrapper">
+        <img src="file:///home/karthi/Downloads/Full-Stack-Python-Developer-Intern-main/img1.png" alt="Project Screenshot 1" class="project-result-img">
+    </div>
+    <div class="project-image-wrapper">
+        <img src="file:///home/karthi/Downloads/Full-Stack-Python-Developer-Intern-main/img1.png" alt="Project Screenshot 2" class="project-result-img">
+    </div>
+    <div class="project-image-wrapper">
+        <img src="file:///home/karthi/Downloads/Full-Stack-Python-Developer-Intern-main/img1.png" alt="Project Screenshot 3" class="project-result-img">
+    </div>
+    <div class="project-image-wrapper">
+        <img src="file:///home/karthi/Downloads/Full-Stack-Python-Developer-Intern-main/img1.png" alt="Project Screenshot 4" class="project-result-img">
+    </div>
+</div>
+    </div>
+</div>
     </div>
 </body>
 </html>
